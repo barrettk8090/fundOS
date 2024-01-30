@@ -31,5 +31,18 @@ class Project_By_Id(Resource):
 
 api.add_resource(Project_By_Id, '/projects/<int:id>')
 
+#Get a list of projects that a given user has funded. Add and remove(?) a project to a user's list of funded projects.
+class User_Project_By_Id(Resource):
+    pass
+
+#Here, int ID will the be the ID of the user. Should it be username?
+api.add_resource(User_Project_By_Id, '/user_projects/<int:id>')
+
+#Get all comments for a project. Post a new comment for a project.
+class Project_Comments_By_ID(Resource):
+    pass
+
+api.add_resource(Project_Comments_By_ID, '/project_comments/<int:id>')
+
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
