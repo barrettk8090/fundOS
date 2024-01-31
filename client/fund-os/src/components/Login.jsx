@@ -1,4 +1,4 @@
-function Login(){
+function Login({user, setUser}){
     return (
         <div>
             <h1>Login</h1>

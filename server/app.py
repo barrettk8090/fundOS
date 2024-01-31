@@ -7,6 +7,67 @@ from config import api, app, db, secret_key, bcrypt
 import json
 from datetime import datetime
 
+
+#####REWRITE IN RESTFUL#####
+
+@app.route('/login', methods=['POST'])
+def login():
+    if request.method == "POST":
+        data = request.get_json()
+        gotten_user = User.query.filter(User.username == data['username']).first()
+        if gotten_user:
+            if gotten_user.authenticate(data['password']):
+                session["user"] = gotten_user.id
+                return gotten_user.to_dict(),200
+            else:
+                return {"Error": "Not valid password"}, 400
+        else:
+            return {"Error": "Not valid username"}, 400
+
+@app.route('/session')
+def check_session():
+    print(session)
+    if session.get('user'):
+        user = User.query.filter(User.id == session["user"]).first()
+        return user.to_dict()
+    else:
+        return {"session": "user not found"}, 404
+
+@app.route('/logout', methods=["DELETE"])
+def delete():
+    if request.method == "DELETE":
+        session['user'] = None
+        return {}, 204
+
+@app.route('/create_user', methods=["POST"])
+def add_user():
+    if request.method == "POST":
+        try:
+            json_dict = request.get_json()
+            new_user = User(
+                username = json_dict.get("username"),
+                password = json_dict.get("password"),
+                email = json_dict.get("email"),
+                first_name = json_dict.get("first_name"),
+                last_name = json_dict.get("last_name"),
+                image = json_dict.get("image"),
+                wallet_address = json_dict.get("wallet_address")
+                
+            )
+            
+            db.session.add(new_user)
+            db.session.commit()
+            session["user"] = new_user.id 
+            # After the user is created and submitted to the data base we have the set the session to that new users id
+            # so that when they create there account it wont automaticly log them out
+        # this adds it to our table
+            return new_user.to_dict(),201
+        except Exception as e:
+            print(e)
+            return make_response({"errors": ["validation errors"]}, 404)
+
+#############################
+
 #Get all users and create a new user
 class Users_Route(Resource):
     def get(self):

@@ -22,13 +22,52 @@ function App() {
 
   const [user, setUser] = useState(null)
 
+  useEffect(() => {
+    fetch('/api/session')
+      .then(r => {
+        if (r.ok) {
+          return r.json();
+        } else {
+          return null;
+        }
+      })
+      .then(data => {setUser(data)
+      });
+  }, []);
+
+  function handleLogout() {
+    fetch('/api/logout', {
+      method: "DELETE"
+    })
+      .then(r => setUser(null));
+  }
+
+  const [userCreatedProjects, setUserCreatedProjects] = useState([])
+  const [userContributedProjects, setUserContributedProjects] = useState([])
+
+  useEffect(() => {
+    if (user) {
+      fetch(`/api/${user.id}/projects`)
+        .then(r => r.json())
+        .then(data => setUserCreatedProjects(data))
+    }
+  }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      fetch(`/api/user_funded_project/${user.id}/`)
+        .then(r => r.json())
+        .then(data =>  setUserContributedProjects(data))
+    }
+  }, [user]);
+
   return (
     
     
       <>
       <Nav/>
         <Home/>
-        <CreateLogin/>
+        <CreateLogin setUser={setUser}/>
         <AllProjects/>
         <Dashboard/>
         <Account/>

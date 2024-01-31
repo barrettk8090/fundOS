@@ -29,6 +29,9 @@ function CreateAccount(){
                     <label for="image">Upload Image (URL):</label>
                     <input type="text" id="profile_image" name="profile_image"/><br/>
 
+                    <label for="wallet_address">Wallet Address Temp:</label>
+                    <input type="text" id="wallet_address" name="wallet_address"/><br/>
+
                     <input type="submit" value="Create Account"/>
                 </form>
                 <p>Already have an account? Log in instead.</p>
