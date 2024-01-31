@@ -4,6 +4,9 @@ function Nav() {
     return (
         <nav>
             <ul>
+                <li>WalletConnect</li>
+            </ul>
+            <ul>
                 <li>Create An Account</li>
                 <li>Login</li>
                 <li>Dashboard</li>
