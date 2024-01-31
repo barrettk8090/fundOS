@@ -16,6 +16,8 @@ import Nav from './components/Nav'
 import AllProjects from './components/AllProjects';
 import Dashboard from './components/Dashboard';
 import Account from './components/Account';
+import CreateAccount from './components/CreateAccount';
+import Login from './components/Login';
 
 
 function App() {
@@ -65,16 +67,22 @@ function App() {
     
     
       <>
-      <Nav/>
-        <Home/>
-        <CreateLogin setUser={setUser}/>
-        <AllProjects/>
-        <Dashboard/>
-        <Account/>
-        <Flex direction="column" gap="2">
+      <BrowserRouter>
+        <Nav/>
+        <Routes>
+        <Route path="/" element={<Home/>}/>
+        <Route path="/create_account" element={<CreateAccount/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/projects" element={<AllProjects/>}/>
+        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/account" element={<Account/>}/>
+
+        </Routes>
+        </BrowserRouter>
+        {/* <Flex direction="column" gap="2">
           <Text>Hello from Radix Themes :)</Text>
         </Flex>
-        <Button>Let's go</Button>
+        <Button>Let's go</Button> */}
       </>
   
   )

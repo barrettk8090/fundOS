@@ -1,4 +1,5 @@
 import * as Form from '@radix-ui/react-form';
+import {Link} from "react-router-dom";
 
 function CreateAccount(){
     return (
@@ -34,7 +35,7 @@ function CreateAccount(){
 
                     <input type="submit" value="Create Account"/>
                 </form>
-                <p>Already have an account? Log in instead.</p>
+                <p>Already have an account? <Link to="/login">Log in</Link> instead.</p>
             </div>
         </>
     );

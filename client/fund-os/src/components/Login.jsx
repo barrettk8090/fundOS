@@ -1,5 +1,6 @@
 function Login({user, setUser}){
     return (
+        <>
         <div>
             <h1>Login</h1>
             <form>
@@ -10,6 +11,7 @@ function Login({user, setUser}){
                 <input type="submit" value="Log in"/>
             </form>
         </div>
+        </>
     );
 }
 
