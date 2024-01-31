@@ -13,7 +13,7 @@ class Users_Route(Resource):
         all_users = User.query.all()
         user_dict =[]
         for user in all_users:
-            user_dict.append(user.to_dict())
+            user_dict.append(user.to_dict(rules = ('-user._password_hash','-user_project.user', '-project_comment.user', '-project.user',)))
         return make_response(user_dict, 200)
     def post(self):
         try:
@@ -124,7 +124,7 @@ class Project_By_Id(Resource):
 
 api.add_resource(Project_By_Id, '/projects/<int:id>')
 
-#Get a list of all the projects that a given user has funded. Add and remove(?) a project to a user's list of funded projects.
+#Get a list of all the projects that a given user has funded. 
 class User_Project_By_Id(Resource):
     def get(self, user_id):
         users_projects = User_Project.query.filter(User_Project.user_id == user_id).all()
@@ -135,12 +135,43 @@ class User_Project_By_Id(Resource):
 
 api.add_resource(User_Project_By_Id, '/user_funded_project/<int:user_id>/')
 
+#Add a project to a user's list of funded projects.
+class Fund_A_Project(Resource):
+    def post(self, user_id, project_id):
+        try:
+            data = request.get_json()
+            new_fund_amount = User_Project(user_id=user_id, project_id=project_id, user_funded_amount=data['user_funded_amount'])
+            db.session.add(new_fund_amount)
+            db.session.commit()
+            return make_response(new_fund_amount.to_dict(), 201)
+        except:
+            return make_response({"errors": ["validation errors"]}, 400)
+        
+api.add_resource(Fund_A_Project, '/fund_project/<int:user_id>/<int:project_id>')
 
-#Get all comments for a project. Post a new comment for a project.
+#Get all comments for a single project. Post a new comment for a project.
 class Project_Comments_By_ID(Resource):
-    pass
+    def get(self, project_id):
+        project_comments = Project_Comment.query.filter(Project_Comment.project_id == project_id).all()
+        project_comment_dict =[]
+        for comment in project_comments:
+            project_comment_dict.append(comment.to_dict())
+        return make_response(project_comment_dict, 200)
 
-api.add_resource(Project_Comments_By_ID, '/project_comments/<int:id>')
+api.add_resource(Project_Comments_By_ID, '/project_comments/<int:project_id>')
+
+class Creating_Project_Comment(Resource):
+    def post(self, user_id, project_id):
+        try:
+            data = request.get_json()
+            new_comment = Project_Comment(comment_text=data['comment_text'], user_id=user_id, project_id=project_id)
+            db.session.add(new_comment)
+            db.session.commit()
+            return make_response(new_comment.to_dict(), 201)
+        except:
+            return make_response({"errors": ["validation errors"]}, 400)
+
+api.add_resource(Creating_Project_Comment, '/project_comments/<int:user_id>/<int:project_id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
