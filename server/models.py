@@ -55,18 +55,17 @@ class Project(db.Model, SerializerMixin):
     deadline = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
+    status = db.Column(db.Boolean, default=True) #True = Active, False = Inactive
 
     user_project = db.relationship('User_Project', back_populates='project')
     project_comment = db.relationship('Project_Comment', back_populates='project')
-
-
 
 #User Project JOIN Table: Use for showing the projects a user has funded 
 class User_Project(db.Model, SerializerMixin):
     __tablename__ = 'user_projects'
 
     id = db.Column(db.Integer, primary_key=True)
+    user_funded_amount = db.Column(db.Integer, nullable=False) #Amount a user has contributed to a project
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))
@@ -101,4 +100,7 @@ class Project_Comment(db.Model, SerializerMixin):
 #     pass
 
 # class Project_Reward_Tiers(db.Model, SerializerMixin):
+#     pass
+
+# class Project_Updates(db.Model, SerializerMixin):
 #     pass
