@@ -9,7 +9,12 @@ from datetime import datetime
 
 #Get all Users
 class Users_Route(Resource):
-    pass
+    def get(self):
+        all_users = User.query.all()
+        user_dict =[]
+        for user in all_users:
+            user_dict.append(user.to_dict())
+        return make_response(user_dict, 200)
 
 api.add_resource(Users_Route, '/users')
 

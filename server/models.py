@@ -38,7 +38,7 @@ class User(db.Model, SerializerMixin):
     def authenticate(self,password):
         return bcrypt.check_password_hash(self._password_hash,password.encode('utf-8'))
     
-    # serialize_rules = 
+    serialize_rules = ('-user_project.user', '-project_comment.user', '-project.user') 
 
 class Project(db.Model, SerializerMixin):
     __tablename__ = 'projects'
@@ -60,6 +60,8 @@ class Project(db.Model, SerializerMixin):
     user_project = db.relationship('User_Project', back_populates='project')
     project_comment = db.relationship('Project_Comment', back_populates='project')
 
+    serialize_rules = ('-user_project.project', '-project_comment.project', '-user.project')
+
 #User Project JOIN Table: Use for showing the projects a user has funded 
 class User_Project(db.Model, SerializerMixin):
     __tablename__ = 'user_projects'
@@ -74,6 +76,8 @@ class User_Project(db.Model, SerializerMixin):
     user = db.relationship('User', back_populates='user_project')
     project = db.relationship('Project', back_populates='user_project')
 
+    serialize_rules = ('-user.user_project', '-project.user_project', '-project.project_comment', '-user.project_comment')
+
 class Project_Comment(db.Model, SerializerMixin):
     __tablename__ = 'project_comments'
 
@@ -86,6 +90,8 @@ class Project_Comment(db.Model, SerializerMixin):
 
     user = db.relationship('User', back_populates='project_comment')
     project = db.relationship('Project', back_populates='project_comment')
+
+    serialize_rules = ('-user.project_comment', '-project.project_comment', '-user.user_project', '-project.user_project')
 
 ##################################################################
 ##################################################################
