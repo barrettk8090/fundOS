@@ -32,8 +32,20 @@ class User_By_Id(Resource):
     def get(self, id):
         user = User.query.filter(User.id == id).first()
         return make_response(user.to_dict(), 200)
-    def patch(self, id):
-        pass
+    def patch(self, id): #Need to add validation, user cannot update all fields
+        current_user = User.query.filter(User.id == id).first()
+        if current_user:
+            try:
+                data = request.get_json()
+                for attr in data:
+                    setattr(current_user, attr, data[attr])
+                db.session.add(current_user)
+                db.session.commit()
+                return make_response(current_user.to_dict(), 202)
+            except:
+                return make_response({"errors": ["Invalid input - validation"]}, 400)
+        else:
+            return make_response({"error": ["User not found"]}, 404)
 
 api.add_resource(User_By_Id, '/users/<int:id>')
 
