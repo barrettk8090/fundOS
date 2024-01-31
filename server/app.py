@@ -102,6 +102,16 @@ class Project_By_User_Id(Resource):
                 return make_response({"errors": ["validation errors"]}, 400)
         else:
             return make_response({"error": ["Project not found"]}, 404)
+        
+    def delete(self, user_id, project_id):
+        one_project = Project.query.filter(Project.id == project_id).first()
+        one_user = User.query.filter(User.id == user_id).first()
+        if one_project and one_user:
+            db.session.delete(one_project)
+            db.session.commit()
+            return make_response({"message": "Project deleted"}, 202)
+        else:
+            return make_response({"error": ["Project not found"]}, 404)
 
 api.add_resource(Project_By_User_Id, '/<int:user_id>/projects/<int:project_id>')
 
