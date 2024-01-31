@@ -79,15 +79,21 @@ class Projects_By_User(Resource):
         except:
             return make_response({"errors": ["validation errors"]}, 400)
         
-#Ability to patch an individual users project. 
+api.add_resource(Projects_By_User, '/<int:user_id>/projects/')
+        
+#Ability to patch an individual users project! 
 #Ability to delete an individual users project.
+#❗This need to be updated to ONLY allow the changing of project title and project type
 class Project_By_User_Id(Resource):
     def patch(self, user_id, project_id):
-        one_project = Project.query.filter(Project.user_id == user_id).first()
-        if one_project:
+        one_project = Project.query.filter(Project.id == project_id).first()
+        one_user = User.query.filter(User.id == user_id).first()
+        if one_project and one_user:
             try:
                 data = request.get_json()
                 for attr in data:
+                    if attr == 'deadline':
+                       data[attr] = datetime.strptime(data[attr], '%Y-%m-%d').date()
                     setattr(one_project, attr, data[attr])
                 db.session.add(one_project)
                 db.session.commit()
@@ -97,7 +103,8 @@ class Project_By_User_Id(Resource):
         else:
             return make_response({"error": ["Project not found"]}, 404)
 
-api.add_resource(Projects_By_User, '/<int:user_id>/projects/<int:project_id>')
+api.add_resource(Project_By_User_Id, '/<int:user_id>/projects/<int:project_id>')
+
 
 #View a single Project. Post a new project, patch an existing project, and delete a project 
 class Project_By_Id(Resource):
