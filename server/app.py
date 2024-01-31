@@ -7,7 +7,7 @@ from config import api, app, db, secret_key, bcrypt
 import json
 from datetime import datetime
 
-#Get all Users
+#Get all users and create a new user
 class Users_Route(Resource):
     def get(self):
         all_users = User.query.all()
@@ -16,7 +16,14 @@ class Users_Route(Resource):
             user_dict.append(user.to_dict())
         return make_response(user_dict, 200)
     def post(self):
-        pass
+        try:
+            data = request.get_json()
+            new_user = User(username=data['username'], password=data['password'], email=data['email'], first_name=data['first_name'], last_name=data['last_name'], image=data['image'], wallet_address=data['wallet_address'])
+            db.session.add(new_user)
+            db.session.commit()
+            return make_response(new_user.to_dict(), 201)
+        except:
+            return make_response("Invalid request", 400)
 
 api.add_resource(Users_Route, '/users')
 
