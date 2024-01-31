@@ -12,6 +12,7 @@ import { Flex, Text, Button, Select} from '@radix-ui/themes';
 
 import Home from './components/Home'
 import CreateLogin from './components/CreateLogin'
+import Nav from './components/Nav'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
     
     
       <>
+      <Nav/>
         <Home/>
         <CreateLogin/>
         <Flex direction="column" gap="2">
