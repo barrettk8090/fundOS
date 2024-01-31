@@ -57,34 +57,51 @@ class Projects_Route(Resource):
         for project in all_projects:
             project_dict.append(project.to_dict()) #Need to add serialization rules here
         return make_response(project_dict, 200)
-
-#Create a new project based on a users ID
-class Projects_By_User(Resource):
-    pass
-    # def post(self):
-    #     try:
-    #         data = request.get_json()
-    #         new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], current_funding=data['current_funding'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=data['user_id'], status=data['status'])
-    #         db.session.add(new_project)
-    #         db.session.commit()
-    #         return make_response(new_project.to_dict(), 201)
-    #     except:
-    #         return make_response("Invalid request", 400)
-
+    
 api.add_resource(Projects_Route, '/projects')
 
-#Post a new project, patch an existing project, and delete a project 
+#Get all projects a user has created. 
+#Create a new project based on a users ID
+class Projects_By_User(Resource):
+    def get(self, user_id):
+        user_project = Project.query.filter(Project.user_id == user_id).all()
+        user_project_dict =[]
+        for project in user_project:
+            user_project_dict.append(project.to_dict())
+        return make_response(user_project_dict, 200)
+    def post(self, user_id):
+        try:
+            data = request.get_json()
+            new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=user_id, status=data['status'])
+            db.session.add(new_project)
+            db.session.commit()
+            return make_response(new_project.to_dict(), 201)
+        except:
+            return make_response({"errors": ["validation errors"]}, 400)
+
+#data[attr] = datetime.strptime(data[attr], '%Y-%m-%d').date()
+
+api.add_resource(Projects_By_User, '/<int:user_id>/projects')
+
+#View a single Project. Post a new project, patch an existing project, and delete a project 
 class Project_By_Id(Resource):
-    pass
+    def get(self, id):
+        project = Project.query.filter(Project.id == id).first()
+        return make_response(project.to_dict(), 200)
 
 api.add_resource(Project_By_Id, '/projects/<int:id>')
 
-#Get a list of projects that a given user has funded. Add and remove(?) a project to a user's list of funded projects.
+#Get a list of all the projects that a given user has funded. Add and remove(?) a project to a user's list of funded projects.
 class User_Project_By_Id(Resource):
-    pass
+    def get(self, user_id):
+        users_projects = User_Project.query.filter(User_Project.user_id == user_id).all()
+        user_project_dict =[]
+        for project in users_projects:
+            user_project_dict.append(project.to_dict())
+        return make_response(user_project_dict, 200)
 
-#Here, int ID will the be the ID of the user. Should it be username?
-api.add_resource(User_Project_By_Id, '/user_projects/<int:id>')
+api.add_resource(User_Project_By_Id, '/user_funded_project/<int:user_id>/')
+
 
 #Get all comments for a project. Post a new comment for a project.
 class Project_Comments_By_ID(Resource):

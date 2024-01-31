@@ -17,17 +17,21 @@ with app.app_context():
 
     print("Creating projects...")
     project1 = Project(name="fundOS Funding",type="Programming",image="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png", description="This is a project that will hopefully one day be somewhat decentralized.",funding_needed=1000,deadline=datetime.datetime(2024, 0o2, 16),user_id=1, status=True)
+    project2 = Project(name="SweatSpectrum",type="Lifestyle",image="https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/116_Ethereum_logo_logos-512.png", description="This is a project that helps you track your workouts.",funding_needed=1000,deadline=datetime.datetime(2024, 0o3, 14),user_id=2, status=True)
 
-    db.session.add(project1)
+    db.session.add_all([project1, project2])
     db.session.commit()
 
     print("Deleting user_projects...")
     User_Project.query.delete()
 
     print("Creating user_projects...")
+    #Barrett funding project 1 - fundOS
     user_project1 = User_Project(user_id=1,project_id=1, user_funded_amount=10)
+    #Barrett funding project 2 - SweatSpectrum
+    user_project2 = User_Project(user_id=1,project_id=2, user_funded_amount=12)
 
-    db.session.add(user_project1)
+    db.session.add_all([user_project1, user_project2])
     db.session.commit()
 
     print("Deleting comments...")
