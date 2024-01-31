@@ -15,12 +15,18 @@ class Users_Route(Resource):
         for user in all_users:
             user_dict.append(user.to_dict())
         return make_response(user_dict, 200)
+    def post(self):
+        pass
 
 api.add_resource(Users_Route, '/users')
 
 #Post a new user and patch an existing user
 class User_By_Id(Resource):
-    pass
+    def get(self, id):
+        user = User.query.filter(User.id == id).first()
+        return make_response(user.to_dict(), 200)
+    def patch(self, id):
+        pass
 
 api.add_resource(User_By_Id, '/users/<int:id>')
 
