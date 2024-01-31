@@ -78,10 +78,26 @@ class Projects_By_User(Resource):
             return make_response(new_project.to_dict(), 201)
         except:
             return make_response({"errors": ["validation errors"]}, 400)
+        
+#Ability to patch an individual users project. 
+#Ability to delete an individual users project.
+class Project_By_User_Id(Resource):
+    def patch(self, user_id, project_id):
+        one_project = Project.query.filter(Project.user_id == user_id).first()
+        if one_project:
+            try:
+                data = request.get_json()
+                for attr in data:
+                    setattr(one_project, attr, data[attr])
+                db.session.add(one_project)
+                db.session.commit()
+                return make_response(one_project.to_dict(), 202)
+            except:
+                return make_response({"errors": ["validation errors"]}, 400)
+        else:
+            return make_response({"error": ["Project not found"]}, 404)
 
-#data[attr] = datetime.strptime(data[attr], '%Y-%m-%d').date()
-
-api.add_resource(Projects_By_User, '/<int:user_id>/projects')
+api.add_resource(Projects_By_User, '/<int:user_id>/projects/<int:project_id>')
 
 #View a single Project. Post a new project, patch an existing project, and delete a project 
 class Project_By_Id(Resource):
