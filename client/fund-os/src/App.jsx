@@ -11,7 +11,6 @@ import {
 import { Flex, Text, Button, Select} from '@radix-ui/themes';
 
 import Home from './components/Home'
-import CreateLogin from './components/CreateLogin'
 import Nav from './components/Nav'
 import AllProjects from './components/AllProjects';
 import Dashboard from './components/Dashboard';
@@ -72,7 +71,7 @@ function App() {
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/create_account" element={<CreateAccount/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
         <Route path="/projects" element={<AllProjects/>}/>
         <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/account" element={<Account/>}/>

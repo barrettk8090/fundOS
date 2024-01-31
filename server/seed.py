@@ -8,8 +8,9 @@ with app.app_context():
 
     print("Creating users...")
     user1 = User(username="barrett", password="password",email="barrett@test.com",first_name="Barrett",last_name="Kowalsky",image="https://avatars.githubusercontent.com/u/57696136?s=400&u=59ab1c32b67f268bb3dc47e3aeee6534e1b08ba4&v=4",wallet_address="0x1234")
+    user2 = User(username="tester", password="password",email="joe@joe.com",first_name="Joe",last_name="Smith",image="https://avatars.githubusercontent.com/u/57696136?s=400&u=59ab1c32b67f268bb3dc47e3aeee6534e1b08ba4&v=4",wallet_address="0x5678")
 
-    db.session.add(user1)
+    db.session.add_all([user1, user2])
     db.session.commit()
 
     print("Deleting projects...")
