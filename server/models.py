@@ -5,7 +5,7 @@ from sqlalchemy_serializer import SerializerMixin
 import datetime
 
 from sqlalchemy.ext.hybrid import hybrid_property
-from config import db, bcrypt
+from config import *
 
 class User(db.Model, SerializerMixin):
     __tablename__ = 'users'
