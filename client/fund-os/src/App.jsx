@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {
   createBrowserRouter,
   BrowserRouter,
@@ -19,6 +19,8 @@ import Account from './components/Account';
 
 
 function App() {
+
+  const [user, setUser] = useState(null)
 
   return (
     
