@@ -37,11 +37,29 @@ class User_By_Id(Resource):
 
 api.add_resource(User_By_Id, '/users/<int:id>')
 
-#Get all Projects
-class Projects(Resource):
-    pass
+#Get all Projects 
+class Projects_Route(Resource):
+    def get(self):
+        all_projects = Project.query.all()
+        project_dict =[]
+        for project in all_projects:
+            project_dict.append(project.to_dict()) #Need to add serialization rules here
+        return make_response(project_dict, 200)
 
-api.add_resource(Projects, '/projects')
+#Create a new project based on a users ID
+class Projects_By_User(Resource):
+    pass
+    # def post(self):
+    #     try:
+    #         data = request.get_json()
+    #         new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], current_funding=data['current_funding'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=data['user_id'], status=data['status'])
+    #         db.session.add(new_project)
+    #         db.session.commit()
+    #         return make_response(new_project.to_dict(), 201)
+    #     except:
+    #         return make_response("Invalid request", 400)
+
+api.add_resource(Projects_Route, '/projects')
 
 #Post a new project, patch an existing project, and delete a project 
 class Project_By_Id(Resource):
