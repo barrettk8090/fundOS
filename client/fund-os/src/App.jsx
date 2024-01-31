@@ -1,6 +1,17 @@
 import { useState } from 'react'
-import { Flex, Text, Button,} from '@radix-ui/themes';
-// import './App.css'
+import {
+  createBrowserRouter,
+  BrowserRouter,
+  RouterProvider,
+  Routes,
+  Route,
+  Router,
+  Link
+} from "react-router-dom";
+import { Flex, Text, Button, Select} from '@radix-ui/themes';
+
+import Home from './components/Home'
+import CreateLogin from './components/CreateLogin'
 
 
 function App() {
@@ -9,11 +20,12 @@ function App() {
     
     
       <>
-       
+        <Home/>
+        <CreateLogin/>
         <Flex direction="column" gap="2">
           <Text>Hello from Radix Themes :)</Text>
-          <Button>Let's go</Button>
         </Flex>
+        <Button>Let's go</Button>
       </>
   
   )
