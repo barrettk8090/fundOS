@@ -1,8 +1,12 @@
-function Dashboard() {
+import { useNavigate } from 'react-router-dom';
+
+function Dashboard({user}) {
+
+  const navigate = useNavigate();
   return (
     <>
     <div>
-      <h1>Welcome, [Name]!</h1>
+      {user ? <h1>{user.username}'s Dashboard </h1> : null}
     </div>
 
     <div className="dash-projects">

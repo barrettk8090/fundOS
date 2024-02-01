@@ -31,7 +31,6 @@ function Login({user, setUser}){
           setLoginUsername("");
           setLoginPassword("");
           setLoginStatus("");
-          console.log(user)
         }
       }
 

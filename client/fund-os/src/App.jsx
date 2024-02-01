@@ -70,10 +70,10 @@ function App() {
         <Nav/>
         <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/create_account" element={<CreateAccount/>}/>
+        <Route path="/create_account" element={<CreateAccount user={user} setUser={setUser}/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
         <Route path="/projects" element={<AllProjects/>}/>
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={<Dashboard user={user}/>}/>
         <Route path="/account" element={<Account/>}/>
 
         </Routes>
