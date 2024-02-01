@@ -17,6 +17,7 @@ import Dashboard from './components/Dashboard';
 import Account from './components/Account';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
+import ProjectDetailPage from './components/ProjectDetailPage';
 
 
 function App() {
@@ -75,6 +76,8 @@ function App() {
         <Route path="/projects" element={<AllProjects/>}/>
         <Route path="/dashboard" element={<Dashboard user={user}/>}/>
         <Route path="/account" element={<Account user={user}/>}/>
+        //This is a TEMP route for the project detail page
+        <Route path="/PLP" element={<ProjectDetailPage user={user}/>}/>
 
         </Routes>
         </BrowserRouter>

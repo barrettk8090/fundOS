@@ -47,7 +47,7 @@ function Login({user, setUser}){
                 <label for="password">Password:</label>
                 <input type="password" placeholder="Enter password" id="password_login" name="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}/><br/>
                 <button role="button" className="contrast" type="submit">
-                  Login
+                  Login →
                 </button>
                 <h3>{loginStatus}</h3>
             </form>

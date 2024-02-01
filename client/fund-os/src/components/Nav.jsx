@@ -21,6 +21,7 @@ function Nav({user, setUser}) {
                 <Link to="/dashboard"><li>Dashboard</li></Link>
                 <Link to="/projects"><li>Projects</li></Link>
                 <Link to="/account"><li>Account</li></Link>
+                <Link to="/PLP"><li>ProjectListingTemp</li></Link>
                 <li>Create Project Form</li>
                 <button onClick={handleLogout}>Logout</button>
             </ul>

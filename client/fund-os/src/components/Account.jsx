@@ -6,6 +6,19 @@ import UserProjects from "./UserProjects";
 
 function Account({user}){
 
+    const [usersProjects, setUsersProjects] = useState([])
+
+
+    useEffect(() => {
+        if (user){
+        fetch(`/api/${user.id}/projects`)
+            .then(r => r.json())
+            .then(data => setUsersProjects(data)) }
+    }, [user]);
+
+    const displayUsersProjects = usersProjects.map(singleUserProject => {
+        return <UserProjects key={singleUserProject.id} singleUserProject={singleUserProject}/>})
+
     return(
         <>
         <div>
@@ -34,7 +47,7 @@ function Account({user}){
         <div>
             <h3>Your Projects</h3>
             <p>A list of projects that you are currently raising money for.</p>
-            <UserProjects/>
+            {displayUsersProjects}
         </div>
         </>
     )
