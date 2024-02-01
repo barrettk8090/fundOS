@@ -10,14 +10,13 @@ function Nav({user, setUser}) {
           .then(r => setUser(null));
       }
     return (
-        <nav>
+    <>
+       {user ? (
+            <nav>
             <ul>
                 <li>WalletConnect</li>
             </ul>
-
             <ul>
-                <Link to="/create-account"><li>Create An Account</li></Link>
-                <Link to="login"><li>Login</li></Link>
                 <Link to="/dashboard"><li>Dashboard</li></Link>
                 <Link to="/projects"><li>Projects</li></Link>
                 <Link to="/account"><li>Account</li></Link>
@@ -26,6 +25,13 @@ function Nav({user, setUser}) {
                 <button onClick={handleLogout}>Logout</button>
             </ul>
         </nav>
+       ): <nav>
+       <ul>
+           <Link to="/create-account"><li>Create An Account</li></Link>
+           <Link to="login"><li>Login</li></Link>
+       </ul>
+   </nav>} 
+        </>
     );
 }
 
