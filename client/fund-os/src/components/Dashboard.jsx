@@ -1,8 +1,25 @@
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useState, useEffect } from 'react';
+import UserFundedCard from './UserFundedCard';
 
 function Dashboard({user}) {
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+
+  const [userFundedProjects, setUserFundedProjects] = useState([])
+
+
+  useEffect(() => {
+    if (user){
+      fetch(`/api//user_funded_project/${user.id}/`)
+          .then(r => r.json())
+          .then(data => setUserFundedProjects(data)) }
+  }, [user]);
+
+  //Need to map further into the userFundedProjects array to display the individual projects
+  const displayUserFundedProject = userFundedProjects.map(oneFundedProject => {
+    return <UserFundedCard key={oneFundedProject.id} oneFundedProject={oneFundedProject}/>})
+
+
   return (
     <>
     <div>
@@ -13,11 +30,7 @@ function Dashboard({user}) {
         <h2>Your Projects</h2>
         <p>A list of projects that you are currently funding.</p>
 
-        <h4>Project Name</h4>
-        <h4>Funding Goal</h4>
-        <h4>Current Funding</h4>
-        <h4>Expires:</h4>
-        <h4>Progress</h4>
+        {displayUserFundedProject}
     </div>
 
     <div className="dash-trending">

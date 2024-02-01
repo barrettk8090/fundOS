@@ -9,11 +9,11 @@ function AllProjects(){
     const [allProjects, setAllProjects] = useState([])
 
 
-useEffect(() => {
-      fetch(`/api/projects`)
-        .then(r => r.json())
-        .then(data => setAllProjects(data))
-  }, []);
+    useEffect(() => {
+        fetch(`/api/projects`)
+            .then(r => r.json())
+            .then(data => setAllProjects(data))
+    }, []);
 
   const displayProjects = allProjects.map(singleProject => {
     return <ProjectCard key={singleProject.id} singleProject={singleProject}/>})
