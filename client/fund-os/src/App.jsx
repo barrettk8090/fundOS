@@ -18,6 +18,7 @@ import Account from './components/Account';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import ProjectDetailPage from './components/ProjectDetailPage';
+import NewProjectSubmission from './components/NewProjectSubmission';
 
 
 function App() {
@@ -71,13 +72,14 @@ function App() {
         <Nav user={user} setUser={setUser}/>
         <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/create_account" element={<CreateAccount user={user} setUser={setUser}/>}/>
+        <Route path="/create-account" element={<CreateAccount user={user} setUser={setUser}/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
         <Route path="/projects" element={<AllProjects/>}/>
         <Route path="/dashboard" element={<Dashboard user={user}/>}/>
         <Route path="/account" element={<Account user={user}/>}/>
         //This is a TEMP route for the project detail page
         <Route path="/project/:id" element={<ProjectDetailPage user={user} component={ProjectDetailPage}/>}/>
+        <Route path="/create-new-project" element={<NewProjectSubmission user={user}/>}/>
 
         </Routes>
         </BrowserRouter>

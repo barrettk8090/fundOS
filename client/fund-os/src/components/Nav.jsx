@@ -16,13 +16,13 @@ function Nav({user, setUser}) {
             </ul>
 
             <ul>
-                <Link to="/create_account"><li>Create An Account</li></Link>
+                <Link to="/create-account"><li>Create An Account</li></Link>
                 <Link to="login"><li>Login</li></Link>
                 <Link to="/dashboard"><li>Dashboard</li></Link>
                 <Link to="/projects"><li>Projects</li></Link>
                 <Link to="/account"><li>Account</li></Link>
-                <Link to="/PLP"><li>ProjectListingTemp</li></Link>
-                <li>Create Project Form</li>
+                <Link to="/project/1"><li>ProjectListingTemp</li></Link>
+                <Link to="/create-new-project"><li>Create Project Form</li></Link>
                 <button onClick={handleLogout}>Logout</button>
             </ul>
         </nav>
