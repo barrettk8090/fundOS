@@ -10,7 +10,7 @@ function Dashboard({user}) {
 
   useEffect(() => {
     if (user){
-      fetch(`/api//user_funded_project/${user.id}/`)
+      fetch(`/api/user_funded_project/${user.id}/`)
           .then(r => r.json())
           .then(data => setUserFundedProjects(data)) }
   }, [user]);

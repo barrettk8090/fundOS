@@ -11,17 +11,19 @@ function Account({user}){
         <div>
             <h2>Account Details</h2>
 
-            <img src={user.image} alt="User Image" />
+            <img src={user?.image} alt="User Image" />
 
-            <p>Your name: {user.first_name} {user.last_name}</p>
+            <p>Your name: {user?.first_name} {user?.last_name}</p>
             <button>Edit</button>
-            <p>Account Email: {user.email}</p>
-            <button>Edit</button>
-
-            <p>Username: {user.username}</p>
+            <p>Account Email: {user?.email}</p>
             <button>Edit</button>
 
-            <p>Wallet Address: {user.wallet_address}</p>
+            <p>Username: {user?.username}</p>
+            <button>Edit</button>
+
+            <p>Wallet Address: {user?.wallet_address}</p> 
+
+
         </div>
 
         <div>
