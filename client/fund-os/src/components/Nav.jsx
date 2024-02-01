@@ -1,7 +1,14 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from "react-router-dom";
 
-function Nav() {
+function Nav({user, setUser}) {
+
+    function handleLogout() {
+        fetch('/api/logout', {
+          method: "DELETE"
+        })
+          .then(r => setUser(null));
+      }
     return (
         <nav>
             <ul>
@@ -15,7 +22,7 @@ function Nav() {
                 <Link to="/projects"><li>Projects</li></Link>
                 <Link to="/account"><li>Account</li></Link>
                 <li>Create Project Form</li>
-                <li>Logout</li>
+                <button onClick={handleLogout}>Logout</button>
             </ul>
         </nav>
     );
