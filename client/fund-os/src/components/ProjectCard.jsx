@@ -1,6 +1,6 @@
+import {Link} from "react-router-dom";
 
-
-function ProjectCard({singleProject}){
+function ProjectCard({singleProject, handleProjectClick}){
 
 
 
@@ -14,7 +14,10 @@ function ProjectCard({singleProject}){
             <p>Funds needed:{singleProject.funding_needed}</p>
             <p>Current Project Amount: {singleProject.current_funding}</p>
             <p>Deadline:{singleProject.deadline}</p>
-            <button>Explore Project →</button>
+            <Link to={{
+                pathname: `/project/${singleProject.id}`,
+                state: { singleProject }
+            }}> <button onClick={() => handleProjectClick(singleProject.id)}>Explore Project →</button></Link>
         </div>
     )
 }

@@ -7,6 +7,16 @@ import {useEffect, useState} from "react";
 function AllProjects(){
 
     const [allProjects, setAllProjects] = useState([])
+    const [singleProject, setSingleProject] = useState(null)
+
+    function handleProjectClick(id){
+        fetch(`/api/projects/${id}`)
+            .then(r => r.json())
+            .then(data => {
+                setSingleProject(data);
+                console.log(data);
+            })
+    }
 
 
     useEffect(() => {
@@ -16,7 +26,7 @@ function AllProjects(){
     }, []);
 
   const displayProjects = allProjects.map(singleProject => {
-    return <ProjectCard key={singleProject.id} singleProject={singleProject}/>})
+    return <ProjectCard key={singleProject.id} singleProject={singleProject} handleProjectClick={handleProjectClick}/>})
 
     return (
         <div>

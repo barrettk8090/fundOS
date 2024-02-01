@@ -77,7 +77,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard user={user}/>}/>
         <Route path="/account" element={<Account user={user}/>}/>
         //This is a TEMP route for the project detail page
-        <Route path="/PLP" element={<ProjectDetailPage user={user}/>}/>
+        <Route path="/project/:id" element={<ProjectDetailPage user={user} component={ProjectDetailPage}/>}/>
 
         </Routes>
         </BrowserRouter>
