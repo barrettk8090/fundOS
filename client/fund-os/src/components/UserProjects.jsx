@@ -1,4 +1,4 @@
-function UserProjects({singleUserProject, user}){
+function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}){
 
     function handleDelete(){
         fetch(`/api/${user.id}/projects/${singleUserProject.id}`, {
@@ -6,7 +6,7 @@ function UserProjects({singleUserProject, user}){
         })
         .then(r => r.json())
         .then(() => {
-            console.log("Project Deleted")
+            setUsersProjects(usersProjects.filter(project => project.id !== singleUserProject.id))
         })
     }
 

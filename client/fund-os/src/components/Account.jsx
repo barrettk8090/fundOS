@@ -17,7 +17,7 @@ function Account({user}){
     }, [user]);
 
     const displayUsersProjects = usersProjects.map(singleUserProject => {
-        return <UserProjects key={singleUserProject.id} singleUserProject={singleUserProject} user={user}/>})
+        return <UserProjects key={singleUserProject.id} singleUserProject={singleUserProject} setUsersProjects={setUsersProjects} usersProjects={usersProjects} user={user}/>})
 
     return(
         <>
