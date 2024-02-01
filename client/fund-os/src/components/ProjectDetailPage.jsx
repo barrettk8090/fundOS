@@ -1,10 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
+import FundModal from './FundModal';
 
 function ProjectDetailPage(props){
     const [project, setProject] = useState(null);
     const location = useLocation();
     const { id } = useParams();
+
+    //Model popup state
+    const [showFundModal, setShowFundModal] = useState(false);
 
 
     //Fetching project data
@@ -44,10 +48,13 @@ function ProjectDetailPage(props){
             <p>Funding Goal: ${project.funding_needed}</p>
             <p>Amount Raised: ${project.current_funding}</p>
             <p>Deadline: {project.deadline}</p>
-            <button>Fund this project <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                                    </svg>
+            <button onClick={() => setShowFundModal(true)}>
+                Fund this project 
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
             </button>
+            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} />}
             <p> [XXXXXX_______] % Funding Progress Bar</p>
         </div>
 
