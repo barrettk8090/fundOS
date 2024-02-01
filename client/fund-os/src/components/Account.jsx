@@ -1,17 +1,27 @@
+import {useState, useEffect} from "react";
+
 import AccountHistory from "./AccountHistory";
 import UserProjects from "./UserProjects";
 
-function Account(){
+
+function Account({user}){
+
     return(
         <>
         <div>
-            <h1>Your Account Details</h1>
-            <p>Username: [Username]</p>
-            <p>Email: [Email]</p>
-            <p>First Name: [First Name]</p>
-            <p>Last Name: [Last Name]</p>
-            <p>Profile Image: [Profile Image]</p>
-            <p>Change Password - TBD</p>
+            <h2>Account Details</h2>
+
+            <img src={user.image} alt="User Image" />
+
+            <p>Your name: {user.first_name} {user.last_name}</p>
+            <button>Edit</button>
+            <p>Account Email: {user.email}</p>
+            <button>Edit</button>
+
+            <p>Username: {user.username}</p>
+            <button>Edit</button>
+
+            <p>Wallet Address: {user.wallet_address}</p>
         </div>
 
         <div>
