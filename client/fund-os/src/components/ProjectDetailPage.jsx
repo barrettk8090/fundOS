@@ -6,6 +6,8 @@ function ProjectDetailPage(props){
     const location = useLocation();
     const { id } = useParams();
 
+
+    //Fetching project data
     useEffect(() => {
         if (location.state) {
             // If state is passed, use it
@@ -21,9 +23,20 @@ function ProjectDetailPage(props){
     if (!project) {
         return <div>Loading...</div>;
     }
+
+    // Fetching project comments
+    // useEffect(() => {
+    //     if (project) {
+    //         fetch(`/api/project_comments/${project.id}`)
+    //             .then(r => r.json())
+    //             .then(data => console.log(data));
+    //     }
+    // }, [project]);
+
     return (
         <>
         <div>
+            <p>Test: {project.id}</p>
             <h1>{project.name}</h1>
             <img src={project.image} alt="Project Image"/>
             <p>{project.type}</p>

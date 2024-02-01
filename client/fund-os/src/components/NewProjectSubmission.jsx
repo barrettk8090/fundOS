@@ -8,7 +8,7 @@ function NewProjectSubmission({user}){
     const [projectImage, setProjectImage] = useState("")
     const [fundingNeeded, setFundingNeeded] = useState("")
     const [deadline, setDeadline] = useState("")
-    // const [projectSubmitted, setProjectSubmitted] = useState(false)
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -19,9 +19,7 @@ function NewProjectSubmission({user}){
             image: projectImage,
             description: projectDescription,
             funding_needed: fundingNeeded,
-            deadline: deadline,
-            // user_id: user.id
-            // status: "true" 
+            deadline: deadline, 
         };
     
         try {
