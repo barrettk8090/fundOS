@@ -133,7 +133,7 @@ class Projects_By_User(Resource):
     def post(self, user_id):
         try:
             data = request.get_json()
-            new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=user_id, status=data['status'])
+            new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=user_id, status=True)
             db.session.add(new_project)
             db.session.commit()
             return make_response(new_project.to_dict(), 201)
