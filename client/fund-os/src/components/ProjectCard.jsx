@@ -1,9 +1,15 @@
-function ProjectCard(){
+
+
+function ProjectCard({singleProject}){
+
+
+
+
     return (
         <div className="project-card">
             <img src="https://via.placeholder.com/150" alt="Project Image"/>
-            <h2>Project Title</h2>
-            <p>Project Description</p>
+            <h2>Project Title: {singleProject.name}</h2>
+            <p>Project Description: </p>
             <p>Project Creator</p>
             <p>Project Goal</p>
             <p>Project Current Amount</p>
