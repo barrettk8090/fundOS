@@ -9,6 +9,10 @@ function Home({user, setUser}){
         </div>
 
         <div>
+            <img height="300" src="./src/assets/Wallet.png"></img>
+        </div>
+
+        <div>
             <Link to="/create_account"><h2>Create An Account</h2></Link>
             <Link to="/login"><h2>Log In</h2></Link>
         </div>
