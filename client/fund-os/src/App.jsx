@@ -20,6 +20,7 @@ import Login from './components/Login';
 import ProjectDetailPage from './components/ProjectDetailPage';
 import NewProjectSubmission from './components/NewProjectSubmission';
 import CreateProjectInterstitial from './components/CreateProjectInterstitial';
+import RadixTests from './components/RadixTests';
 
 
 function App() {
@@ -75,6 +76,7 @@ function App() {
         <Route path="/project/:id" element={<ProjectDetailPage user={user} component={ProjectDetailPage}/>}/>
         <Route path="/create-new-project" element={<NewProjectSubmission user={user}/>}/>
         <Route path="/lets-do-this/:projectId" element={<CreateProjectInterstitial user={user}/>}/>
+        <Route path="/radix-tests" element={<RadixTests/>}/>
 
         </Routes>
         </BrowserRouter>
