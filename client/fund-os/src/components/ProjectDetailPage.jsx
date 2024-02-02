@@ -55,11 +55,13 @@ function ProjectDetailPage({user, ...props}){
         try {
             const response = await fetch(`/api/project_comments/${user?.id}/${project.id}`, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: {'Content-Type': 'application/json',},
                 body: JSON.stringify(formData),
-            });
+            })
+            .then(r => r.json())
+            .then(data=> setProjectComments([...projectComments, data]));
+            
+            
     
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
