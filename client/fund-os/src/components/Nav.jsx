@@ -1,13 +1,16 @@
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 function Nav({user, setUser}) {
+    const navigate = useNavigate();
 
     function handleLogout() {
         fetch('/api/logout', {
           method: "DELETE"
         })
           .then(r => setUser(null));
+        navigate('/');
       }
     return (
     <>

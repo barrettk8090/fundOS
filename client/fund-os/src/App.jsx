@@ -19,6 +19,7 @@ import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import ProjectDetailPage from './components/ProjectDetailPage';
 import NewProjectSubmission from './components/NewProjectSubmission';
+import CreateProjectInterstitial from './components/CreateProjectInterstitial';
 
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
         //This is a TEMP route for the project detail page
         <Route path="/project/:id" element={<ProjectDetailPage user={user} component={ProjectDetailPage}/>}/>
         <Route path="/create-new-project" element={<NewProjectSubmission user={user}/>}/>
+        <Route path="/lets-do-this/:projectId" element={<CreateProjectInterstitial user={user}/>}/>
 
         </Routes>
         </BrowserRouter>

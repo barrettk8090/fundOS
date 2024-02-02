@@ -1,4 +1,5 @@
 import {useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 
 function NewProjectSubmission({user}){
 
@@ -8,6 +9,8 @@ function NewProjectSubmission({user}){
     const [projectImage, setProjectImage] = useState("")
     const [fundingNeeded, setFundingNeeded] = useState("")
     const [deadline, setDeadline] = useState("")
+
+    const navigate = useNavigate();
 
 
     const handleSubmit = async (e) => {
@@ -32,11 +35,18 @@ function NewProjectSubmission({user}){
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             } else {
+                const data = await response.json();
+                const projectId = data.id; // assuming the response contains an 'id' field
+                console.log('Project ID:', projectId)
                 console.log('Form submitted successfully');
+                navigate(`/lets-do-this/${projectId}`) // pass the project ID in the URL;
             }
         } catch (error) {
             console.error('An error occurred while submitting the form: ', error);
         }
+        
+        //Need to get the project id from the response and navigate to the project detail page
+        
     };
 
     return (

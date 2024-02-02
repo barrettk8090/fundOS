@@ -1,10 +1,13 @@
 import {useState} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login({user, setUser}){
 
     const [loginUsername, setLoginUsername] = useState("")
     const [loginPassword, setLoginPassword] = useState("")
     const [loginStatus, setLoginStatus] = useState("")
+
+    const navigate = useNavigate();
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -34,6 +37,11 @@ function Login({user, setUser}){
         }
       }
 
+      function handleLogin(){
+        if (user) {
+          navigate(`/dashboard`)}
+      }
+
     return (
         <>
         <div>
@@ -46,7 +54,7 @@ function Login({user, setUser}){
                 <input type="text" placeholder="Enter username" id="username_login" name="username" value={loginUsername} onChange={(e) => setLoginUsername(e.target.value)}/><br/>
                 <label for="password">Password:</label>
                 <input type="password" placeholder="Enter password" id="password_login" name="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}/><br/>
-                <button role="button" className="contrast" type="submit">
+                <button role="button" className="contrast" type="submit" onClick={handleLogin()} >
                   Login →
                 </button>
                 <h3>{loginStatus}</h3>

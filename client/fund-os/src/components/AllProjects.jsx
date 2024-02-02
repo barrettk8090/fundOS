@@ -25,6 +25,8 @@ function AllProjects(){
             .then(data => setAllProjects(data))
     }, []);
 
+   
+
   const displayProjects = allProjects.map(singleProject => {
     return <ProjectCard key={singleProject.id} singleProject={singleProject} handleProjectClick={handleProjectClick}/>})
 
