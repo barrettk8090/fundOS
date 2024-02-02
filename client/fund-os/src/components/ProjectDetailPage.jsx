@@ -3,10 +3,11 @@ import { useLocation, useParams } from 'react-router-dom';
 import FundModal from './FundModal';
 import ProjectComment from './ProjectComment';
 
-function ProjectDetailPage(props, {user}){
+function ProjectDetailPage({user, ...props}){
     const [project, setProject] = useState(null);
     const location = useLocation();
     const { id } = useParams();
+    const [newComment, setNewComment] = useState('')
 
     //Model popup state
     const [showFundModal, setShowFundModal] = useState(false);
@@ -42,9 +43,35 @@ function ProjectDetailPage(props, {user}){
     }
 
     const displayProjectComments = projectComments.map(comment => {
-        return <ProjectComment key={comment.id} comment={comment} />})
+        return <ProjectComment key={comment.id} comment={comment}/>})
 
-    console.log(project)
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    
+        const formData = {
+            comment_text: newComment
+        };
+    
+        try {
+            const response = await fetch(`/api/project_comments/${user?.id}/${project.id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+    
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            } else {
+                console.log('Form submitted successfully');
+            }
+        } catch (error) {
+            console.error('An error occurred while submitting the form: ', error);
+        }
+    }
+
+    console.log(user)
 
     return (
         <>
@@ -53,7 +80,7 @@ function ProjectDetailPage(props, {user}){
             <h1>{project.name}</h1>
             <img src={project.image} alt="Project Image"/>
             <p>{project.type}</p>
-            <p>Created by: NEED USERNAME --> Not working {project.user_project.user}</p>
+            <p>Created by: NEED USERNAME -- Not working {project.user_project.user}</p>
             <p>{project.description}</p>
             <p>Funding Goal: ${project.funding_needed}</p>
             <p>Amount Raised: ${project.current_funding}</p>
@@ -83,10 +110,10 @@ function ProjectDetailPage(props, {user}){
 
         <div className="add-comment">
             <h3>Add a Comment</h3>
-            <form>
+            <form onSubmit={handleSubmit}> 
                 <label>
                     Comment:
-                    <input type="text" name="comment" />
+                    <input type="text" name="comment" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
                 </label>
                 <input type="submit" value="Submit" />
             </form>
@@ -95,7 +122,5 @@ function ProjectDetailPage(props, {user}){
         </>
     )
 }
-
-// const project = props.location.state.singleProject
 
 export default ProjectDetailPage
