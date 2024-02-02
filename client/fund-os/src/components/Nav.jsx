@@ -1,4 +1,4 @@
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+// import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
 
