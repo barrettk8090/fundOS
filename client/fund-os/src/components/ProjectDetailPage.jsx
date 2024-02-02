@@ -105,6 +105,7 @@ function ProjectDetailPage({user, ...props}){
         </div>
 
         <div className="project-comments">
+            <h2>Comments</h2>
             {displayProjectComments}
         </div>
 
