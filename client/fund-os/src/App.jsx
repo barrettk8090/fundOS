@@ -38,13 +38,6 @@ function App() {
       });
   }, []);
 
-  function handleLogout() {
-    fetch('/api/logout', {
-      method: "DELETE"
-    })
-      .then(r => setUser(null));
-  }
-
   const [userCreatedProjects, setUserCreatedProjects] = useState([])
   const [userContributedProjects, setUserContributedProjects] = useState([])
 
@@ -63,6 +56,18 @@ function App() {
         .then(data =>  setUserContributedProjects(data))
     }
   }, [user]);
+
+  // const [projects, setProjects] = useState([])
+
+  // // GET PROJECT COMMENTS
+  //    // Fetching project comments
+  //   useEffect(() => {
+  //       if (project) {
+  //           fetch(`/api/project_comments/${project.id}`)
+  //               .then(r => r.json())
+  //               .then(data => setProjects(data));
+  //       }
+  //   }, [project]);
 
   return (
     
