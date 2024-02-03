@@ -5,7 +5,7 @@ function Home({user, setUser}){
     return (
         <>
         <div>
-            <h1 className="text-6xl font-bold underline">The future of crowdfunding.</h1>
+            <h1 className="text-3xl font-bold">The future of crowdfunding.</h1>
         </div>
 
         <div>
