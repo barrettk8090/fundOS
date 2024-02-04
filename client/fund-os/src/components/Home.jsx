@@ -9,7 +9,7 @@ function Home({user, setUser}){
         </div>
 
         <div>
-            <img height="300" src="./src/assets/Wallet.png"></img>
+            <img className="w-60" src="./src/assets/Wallet.png"></img>
         </div>
 
         <div>

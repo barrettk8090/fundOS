@@ -21,25 +21,25 @@ function Dashboard({user}) {
 
 
   return (
-    <>
-    <div>
-      {user ? <h1>{user.username}'s Dashboard </h1> : null}
-    </div>
+    <div className="mx-12 my-4 border-2">
+      <div className="border-2 place-content-center">
+        {user ? <h1 className="flex justify-center">@{user.username}'s Dashboard </h1> : null}
+      </div>
 
-    <div className="dash-projects">
-        <h2>Your Projects</h2>
-        <p>A list of projects that you are currently funding.</p>
+      <div className="dash-projects">
+          <h2>Your Projects</h2>
+          <p>A list of projects that you are currently funding.</p>
 
-        {displayUserFundedProject}
-    </div>
+          {displayUserFundedProject}
+      </div>
 
-    <div className="dash-trending">
-        <div className="indiv-trending">
-            <h2>Trending Projects</h2>
-            <p>A list of projects that are currently trending.</p>
-        </div>
+      <div className="dash-trending">
+          <div className="indiv-trending">
+              <h2>Trending Projects</h2>
+              <p>A list of projects that are currently trending.</p>
+          </div>
+      </div>
     </div>
-    </>
   );
 }
 
