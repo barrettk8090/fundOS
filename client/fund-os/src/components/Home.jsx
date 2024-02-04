@@ -5,7 +5,7 @@ function Home({user, setUser}){
     return (
         <>
         <div className="mx-36 h-96 ">
-            <h1 className="my-12 flex justify-center text-3xl lg:text-7xl text-center font-bold">Welcome to the future <br></br> of crowdfunding.</h1>
+            <h1 className="my-12 flex justify-center text-3xl lg:text-7xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-center font-bold">Welcome to the future <br></br> of crowdfunding.</h1>
             <p className="mb-12 flex justify-center text-2xl text-center">Easy project creation. Get funded by backers. Immediate and decentralized payouts.</p>
             <div className="flex justify-center">
                 <button>Get Started</button>
