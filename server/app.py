@@ -143,9 +143,16 @@ class Projects_By_User(Resource):
 api.add_resource(Projects_By_User, '/<int:user_id>/projects/')
         
 #Ability to patch an individual users project! 
-#Ability to delete an individual users project.
+#Ability to delete an individual users project
 #❗This need to be updated to ONLY allow the changing of project title and project type
 class Project_By_User_Id(Resource):
+    def get(self, user_id, project_id):
+        one_project = Project.query.filter(Project.id == project_id).first()
+        one_user = User.query.filter(User.id == user_id).first()
+        if one_project and one_user:
+            return make_response(one_project.to_dict(), 200)
+        else:
+            return make_response({"error": ["Project not found"]}, 404)
     def patch(self, user_id, project_id):
         one_project = Project.query.filter(Project.id == project_id).first()
         one_user = User.query.filter(User.id == user_id).first()

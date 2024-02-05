@@ -25,6 +25,13 @@ class User(db.Model, SerializerMixin):
     user_project = db.relationship('User_Project', back_populates='user')
     project_comment = db.relationship('Project_Comment', back_populates='user')
 
+    @validates("email")
+    def validate_email(self, key, email):
+        if '@' in email and '.' in email: 
+            return email
+        else:
+            raise AssertionError('Provided email is not a valid email address')
+
 
     @hybrid_property
     def password(self):

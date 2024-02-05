@@ -1,16 +1,15 @@
 import {Link} from "react-router-dom";
 
-function ProjectCard({singleProject, handleProjectClick}){
+function ProjectCard({singleProject, handleProjectClick, username}){
 
-
-
+    console.log(username)
 
     return (
         <div className="project-card">
             <img src="https://via.placeholder.com/150" alt="Project Image"/>
             <h2>{singleProject.name}</h2>
             <p>{singleProject.description}</p>
-            <p>USER ID:{singleProject.user_id}</p>
+            <p>USER ID:{username}</p>
             <p>Funds needed:{singleProject.funding_needed}</p>
             <p>Current Project Amount: {singleProject.current_funding}</p>
             <p>Deadline:{singleProject.deadline}</p>

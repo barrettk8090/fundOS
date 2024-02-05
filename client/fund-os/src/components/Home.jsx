@@ -40,7 +40,7 @@ function Home({user, setUser}){
         <div className="mx-36 h-96">
             <h2 className="my-12 flex justify-center text-3xl lg:text-7xl text-center font-bold">Ready to get started?</h2>
             <div className="flex justify-center">
-            <Link to="/create_account"><button className="mx-10">Create An Account</button></Link>
+            <Link to="/create-account"><button className="mx-10">Create An Account</button></Link>
             <Link to="/login"><button className="mx-10">Log In</button></Link>
             </div>
         </div>

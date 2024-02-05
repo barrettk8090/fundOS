@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 function AllProjects(){
 
     const [allProjects, setAllProjects] = useState([])
+    const [allUsers, setAllUsers] = useState([])
     const [singleProject, setSingleProject] = useState(null)
 
     function handleProjectClick(id){
@@ -14,10 +15,14 @@ function AllProjects(){
             .then(r => r.json())
             .then(data => {
                 setSingleProject(data);
-                console.log(data);
             })
     }
 
+    useEffect(() => {
+        fetch(`/api/users`)
+            .then(r => r.json())
+            .then(data => setAllUsers(data))
+    }, []);
 
     useEffect(() => {
         fetch(`/api/projects`)
@@ -25,10 +30,21 @@ function AllProjects(){
             .then(data => setAllProjects(data))
     }, []);
 
-   
+    const displayProjects = allProjects.map(singleProject => {
+        const projectCreator = allUsers.find(user => user.id === singleProject.user_id);
+    
+        return (
+            <ProjectCard 
+                key={singleProject.id} 
+                singleProject={singleProject} 
+                handleProjectClick={handleProjectClick}
+                username={projectCreator ? projectCreator.username : 'Unknown'}
+            />
+        )
+    })
 
-  const displayProjects = allProjects.map(singleProject => {
-    return <ProjectCard key={singleProject.id} singleProject={singleProject} handleProjectClick={handleProjectClick}/>})
+
+   
 
     return (
         <div>
