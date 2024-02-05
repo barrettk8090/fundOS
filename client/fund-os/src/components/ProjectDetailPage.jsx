@@ -8,8 +8,10 @@ function ProjectDetailPage({user, ...props}){
     const location = useLocation();
     const { id } = useParams();
     const [newComment, setNewComment] = useState('')
+    const [singleProject, setSingleProject] = useState(null)
+    const [allUsers, setAllUsers] = useState([])
 
-    //Model popup state
+    //Modal popup state
     const [showFundModal, setShowFundModal] = useState(false);
 
 
@@ -17,7 +19,7 @@ function ProjectDetailPage({user, ...props}){
     useEffect(() => {
         if (location.state) {
             // If state is passed, use it
-            setProject(location.state.singleProject);
+            setSingleProject(location.state.singleProject);
         } else {
             // Otherwise, fetch the project data
             fetch(`/api/projects/${id}`)
@@ -26,7 +28,15 @@ function ProjectDetailPage({user, ...props}){
         }
     }, [location, id]);
 
-      const [projectComments, setProjectComments] = useState([])
+    useEffect(() => {
+        fetch(`/api/users`)
+            .then(r => r.json())
+            .then(data => setAllUsers(data))
+    }, []);
+
+    const projectCreator = allUsers.find(user => user?.id === project?.user_id);
+
+    const [projectComments, setProjectComments] = useState([])
 
 
     // Fetching project comments
@@ -73,7 +83,6 @@ function ProjectDetailPage({user, ...props}){
         }
     }
 
-    console.log(user)
 
     return (
         <>
@@ -82,7 +91,7 @@ function ProjectDetailPage({user, ...props}){
             <h1>{project.name}</h1>
             <img src={project.image} alt="Project Image"/>
             <p>{project.type}</p>
-            <p>Created by: NEED USERNAME -- Not working {project.user_project.user}</p>
+            <p>Created by: {projectCreator?.username}</p>
             <p>{project.description}</p>
             <p>Funding Goal: ${project.funding_needed}</p>
             <p>Amount Raised: ${project.current_funding}</p>

@@ -1,6 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
-from sqlalchemy import MetaData, event
+from sqlalchemy import MetaData, event, func, select
 from sqlalchemy_serializer import SerializerMixin
 import datetime
 
@@ -58,7 +58,6 @@ class Project(db.Model, SerializerMixin):
     ##SAVE AS MARKUP?? EG with bold, italic, etc??
     description = db.Column(db.String, nullable=False) #Keep as string for MVP
     funding_needed = db.Column(db.Integer, nullable=False)
-    current_funding = db.Column(db.Integer, nullable=False, default=0)
     deadline = db.Column(db.DateTime, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
@@ -66,6 +65,19 @@ class Project(db.Model, SerializerMixin):
 
     user_project = db.relationship('User_Project', back_populates='project')
     project_comment = db.relationship('Project_Comment', back_populates='project')
+
+    @hybrid_property
+    def current_funding(self):
+            # Define a subquery to get the sum of user_funded_amount for this project
+            subq = db.session.query(func.sum(User_Project.user_funded_amount))\
+            .filter(User_Project.project_id == self.id)\
+            .scalar()
+            return subq if subq is not None else 0
+    
+    def to_dict(self):
+        data = SerializerMixin.to_dict(self)
+        data['current_funding'] = self.current_funding
+        return data
 
     serialize_rules = ('-user_project.project', '-project_comment.project', '-user.project')
 

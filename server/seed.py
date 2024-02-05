@@ -31,8 +31,10 @@ with app.app_context():
     user_project1 = User_Project(user_id=1,project_id=1, user_funded_amount=10)
     #Barrett funding project 2 - SweatSpectrum
     user_project2 = User_Project(user_id=1,project_id=2, user_funded_amount=12)
+    #Test funding project 1 - fundOS
+    user_project3 = User_Project(user_id=2,project_id=1, user_funded_amount=210)
 
-    db.session.add_all([user_project1, user_project2])
+    db.session.add_all([user_project1, user_project2, user_project3])
     db.session.commit()
 
     print("Deleting comments...")
