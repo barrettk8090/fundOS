@@ -83,6 +83,7 @@ function ProjectDetailPage({user, ...props}){
         }
     }
 
+    // const calculateFunding 
 
     return (
         <>
@@ -102,7 +103,7 @@ function ProjectDetailPage({user, ...props}){
                 <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </button>
-            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} />}
+            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project_id={project.id} user_id={user.id} />}
             <p> [XXXXXX_______] % Funding Progress Bar</p>
         </div>
 
