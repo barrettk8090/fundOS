@@ -1,6 +1,4 @@
 function ProjectComment({comment}){
-    
-console.log(comment)
 
     return(
         <div>

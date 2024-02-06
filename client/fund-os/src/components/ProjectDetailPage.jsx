@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import FundModal from './FundModal';
 import ProjectComment from './ProjectComment';
+import ProjectFunders from './ProjectFunders';
 
 function ProjectDetailPage({user, ...props}){
     const [project, setProject] = useState(null);
@@ -83,7 +84,9 @@ function ProjectDetailPage({user, ...props}){
         }
     }
 
-    // const calculateFunding 
+    const displayProjectFunders = project.user_project.map(funder => {
+        return <ProjectFunders key={funder.id} funder={funder.user.username} funder_amt={funder.user_funded_amount}/>})
+
 
     return (
         <>
@@ -113,7 +116,7 @@ function ProjectDetailPage({user, ...props}){
 
         <div>
             <h2>Project Funders</h2>
-            <p> List of funder</p>
+            {displayProjectFunders}
         </div>
 
         <div className="project-comments">
