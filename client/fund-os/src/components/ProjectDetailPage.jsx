@@ -96,25 +96,39 @@ function ProjectDetailPage({user, ...props}){
 
     return (
         <>
-        <div>
-            <h1>{project.name}</h1>
-            <img src={project.image} alt="Project Image"/>
+        <div className="grid grid-cols-8 mx-12 my-12">
+
+            <div className="col-span-4">
+                <h1>{project.name}</h1>
+                <p>Created by: {projectCreator?.username}</p>
+                <img src={project.image} alt="Project Image"/>
+            </div>
+
+            <div className="col-span-4 mt-40">
+               <h3 className="text-3xl my-4">Funding Goal</h3>
+               <p className="mb-12"> {project.funding_needed} </p>
+
+                <h3 className="text-3xl my-4">Amount Raised</h3>
+                <p className="mb-12"> {project.current_funding} </p>
+
+                <h3 className="text-3xl my-4">Deadline</h3>
+                <p className="mb-12"> {project.deadline} </p>
+            </div>
+
+            <div className="col-span-8">
             <p>{project.type}</p>
-            <p>Created by: {projectCreator?.username}</p>
             <p>{project.description}</p>
-            <p>Funding Goal: ${project.funding_needed}</p>
-            <p>Amount Raised: ${project.current_funding}</p>
-            <p>Deadline: {project.deadline}</p>
-            <button onClick={() => setShowFundModal(true)}>
-                Fund this project 
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-            </button>
-            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
-            <p> {fundingPercentage} Funded</p>
-            <p> [XXXXXX_______] % Funding Progress Bar</p>
-        </div>
+                <button onClick={() => setShowFundModal(true)}>
+                    Fund this project 
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                </button>
+                {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
+                <p> {fundingPercentage} Funded</p>
+                <p> [XXXXXX_______] % Funding Progress Bar</p>
+             </div>
+            </div>
 
         <div>
             <h2> TBD - Project Updates</h2>
