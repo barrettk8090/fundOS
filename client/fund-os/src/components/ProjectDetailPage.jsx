@@ -91,8 +91,8 @@ function ProjectDetailPage({user, ...props}){
     const displayProjectFunders = project.user_project.map(funder => {
         return <ProjectFunders key={funder.id} funder={funder.user.username} funder_amt={funder.user_funded_amount}/>})
 
-    //Calculate funding percentage
-    const fundingPercentage = ((project.current_funding / project.funding_needed) * 100).toString() + '%'
+    //Calculate funding percentage - 2 decimal places
+    const fundingPercentage = (((project.current_funding / project.funding_needed) * 100).toFixed(2)).toString() + '%'
 
     return (
         <>
