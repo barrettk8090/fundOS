@@ -87,6 +87,8 @@ function ProjectDetailPage({user, ...props}){
     const displayProjectFunders = project.user_project.map(funder => {
         return <ProjectFunders key={funder.id} funder={funder.user.username} funder_amt={funder.user_funded_amount}/>})
 
+    const fundingPercentage = ((project.current_funding / project.funding_needed) * 100).toString() + '%'
+
 
     return (
         <>
@@ -107,6 +109,7 @@ function ProjectDetailPage({user, ...props}){
                 </svg>
             </button>
             {showFundModal && <FundModal setShowFundModal={setShowFundModal} project_id={project.id} user_id={user.id} />}
+            <p> {fundingPercentage} Funded</p>
             <p> [XXXXXX_______] % Funding Progress Bar</p>
         </div>
 
