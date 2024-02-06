@@ -4,7 +4,7 @@ function ProjectCard({singleProject, handleProjectClick, username}){
 
     return (
         <div className="project-card">
-            <img src="https://via.placeholder.com/150" alt="Project Image"/>
+            <img src={singleProject.image} alt="Project Image"/>
             <h2>{singleProject.name}</h2>
             <p>{singleProject.description}</p>
             <p>Created by: {username}</p>
