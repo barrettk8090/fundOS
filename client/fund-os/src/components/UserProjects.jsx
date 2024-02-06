@@ -51,7 +51,6 @@ function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}
     return (
         <div>
             <h1>Your Projects </h1>
-            <h1>❗❗❗This might make more sense to be in dash. Post MVP❗❗❗</h1>
             <p>{singleUserProject.name}</p> 
             
             <div className={` ${editMode ? 'edit' : ''}`}>
@@ -67,7 +66,7 @@ function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}
         </div>
             
             <button onClick={handleDelete}>Delete Project</button>
-            <p> A note about editing projects... </p>
+           
         </div>
     );
 }

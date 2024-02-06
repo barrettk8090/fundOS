@@ -29,8 +29,9 @@ function Dashboard({user}) {
       <div className="dash-projects">
           <h2>Your Projects</h2>
           <p>A list of projects that you are currently funding.</p>
-
-          {displayUserFundedProject}
+          <div className="grid grid-cols-6 grid-rows-6">
+            {displayUserFundedProject}
+          </div>
       </div>
 
       <div className="dash-trending">

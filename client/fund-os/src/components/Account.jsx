@@ -46,8 +46,10 @@ function Account({user}){
 
         <div>
             <h3>Your Projects</h3>
+            <h3>❗❗❗This might make more sense to be in dash. Post MVP❗❗❗</h3>
             <p>A list of projects that you are currently raising money for.</p>
             {displayUsersProjects}
+             <p> A note about editing projects... </p>
         </div>
         </>
     )
