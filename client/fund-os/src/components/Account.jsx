@@ -21,36 +21,44 @@ function Account({user}){
 
     return(
         <>
-        <div>
-            <h2>Account Details</h2>
+        
+        <h1 className="mx-12 my-4 flex justify-center">Account Details</h1>
 
-            <img className="rounded-full w-32" src={user?.image} alt="User Image" />
+        <div className=" grid grid-cols-2">
+            <div className=" bg-purple-800 mx-8 p-6 rounded-md col-span-1">
+                <h1 className="pb-6 flex justify-center"> Your Details: </h1>
+                <img className="rounded-full w-32" src={user?.image} alt="User Image" />
 
-            <p>Your name: {user?.first_name} {user?.last_name}</p>
-            <button>Edit</button>
-            <p>Account Email: {user?.email}</p>
-            <button>Edit</button>
+                <p>Your name: {user?.first_name} {user?.last_name}</p>
+                <button>Edit</button>
+                <p>Account Email: {user?.email}</p>
+                <button>Edit</button>
 
-            <p>Username: {user?.username}</p>
-            <button>Edit</button>
+                <p>Username: {user?.username}</p>
+                <button>Edit</button>
 
-            <p>Wallet Address: {user?.wallet_address}</p> 
+                <p>Wallet Address: {user?.wallet_address}</p> 
+            </div>
 
-
+            <div className=" bg-purple-800 mx-8 p-6 rounded-md col-span-1">
+                <h1 className="pb-6 flex justify-center">Your Projects</h1>
+                <h3>❗❗❗This might make more sense to be in dash. Post MVP❗❗❗</h3>
+                <p>A list of projects that you are currently raising money for.</p>
+                {displayUsersProjects}
+                <p> A note about editing projects... </p>
+            </div>
+                
+            <div className="col-span-2 bg-purple-800 mx-6 my-16 p-6 rounded-md">
+                <h1 className="pb-6 flex justify-center">Account History</h1>
+                <AccountHistory/>
+            </div>
         </div>
 
         <div>
-            <h3>Account History</h3>
-            <AccountHistory/>
+            
         </div>
 
-        <div>
-            <h3>Your Projects</h3>
-            <h3>❗❗❗This might make more sense to be in dash. Post MVP❗❗❗</h3>
-            <p>A list of projects that you are currently raising money for.</p>
-            {displayUsersProjects}
-             <p> A note about editing projects... </p>
-        </div>
+        
         </>
     )
 }
