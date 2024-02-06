@@ -45,7 +45,7 @@ function AllProjects(){
    
 
     return (
-        <div>
+        <div className="mx-12">
             <h1 className="mx-12 my-4 flex justify-center">All Projects</h1>
             {displayProjects}
         </div>

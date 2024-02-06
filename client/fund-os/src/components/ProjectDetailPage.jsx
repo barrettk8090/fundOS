@@ -135,7 +135,7 @@ function ProjectDetailPage({user, ...props}){
         </div>
 
         <div>
-            <h2 className="my-4">Project Funders</h2>
+            <h2 className="text-6xl my-4">Funders</h2>
             {displayProjectFunders}
         </div>
 

@@ -3,12 +3,12 @@ import {Link} from "react-router-dom";
 function ProjectCard({singleProject, handleProjectClick, username}){
 
     return (
-        <div className="project-card bg-slate-400 my-8 grid grid-cols-8">
+        <div className="project-card bg-slate-400 my-8 grid grid-cols-8 rounded-md">
             <div className="col-span-3">
-                <img src={singleProject.image} alt="Project Image"/>
+                <img className="p-4" src={singleProject.image} alt="Project Image"/>
             </div>
 
-            <div className="col-span-5">
+            <div className="mx-12 my-12 col-span-5">
                 <h2 className="my-6 font-bold text-3xl">{singleProject.name}</h2>
                 <p>{singleProject.description}</p>
                 <p>Created by: {username}</p>
