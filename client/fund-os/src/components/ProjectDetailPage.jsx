@@ -9,6 +9,7 @@ function ProjectDetailPage({user, ...props}){
     const location = useLocation();
     const { id } = useParams();
     const [newComment, setNewComment] = useState('')
+    const [projectComments, setProjectComments] = useState([])
     const [singleProject, setSingleProject] = useState(null)
     const [allUsers, setAllUsers] = useState([])
 
@@ -29,15 +30,15 @@ function ProjectDetailPage({user, ...props}){
         }
     }, [location, id]);
 
+    //Fetching all users
     useEffect(() => {
         fetch(`/api/users`)
             .then(r => r.json())
             .then(data => setAllUsers(data))
     }, []);
 
+    //Match user id with the current project ID to get the proj creator
     const projectCreator = allUsers.find(user => user?.id === project?.user_id);
-
-    const [projectComments, setProjectComments] = useState([])
 
 
     // Fetching project comments
@@ -53,9 +54,11 @@ function ProjectDetailPage({user, ...props}){
         return <div>Loading...</div>;
     }
 
+    //Map thru comments to display
     const displayProjectComments = projectComments.map(comment => {
         return <ProjectComment key={comment.id} comment={comment}/>})
 
+    //Handle form submission to add new comment
     const handleSubmit = async (e) => {
         e.preventDefault();
     
@@ -84,16 +87,16 @@ function ProjectDetailPage({user, ...props}){
         }
     }
 
+    //Map thru funders to display 
     const displayProjectFunders = project.user_project.map(funder => {
         return <ProjectFunders key={funder.id} funder={funder.user.username} funder_amt={funder.user_funded_amount}/>})
 
+    //Calculate funding percentage
     const fundingPercentage = ((project.current_funding / project.funding_needed) * 100).toString() + '%'
-
 
     return (
         <>
         <div>
-            <p>Test: {project.id}</p>
             <h1>{project.name}</h1>
             <img src={project.image} alt="Project Image"/>
             <p>{project.type}</p>
@@ -108,7 +111,7 @@ function ProjectDetailPage({user, ...props}){
                 <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
             </button>
-            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project_id={project.id} user_id={user.id} />}
+            {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
             <p> {fundingPercentage} Funded</p>
             <p> [XXXXXX_______] % Funding Progress Bar</p>
         </div>
