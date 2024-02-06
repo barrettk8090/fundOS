@@ -96,15 +96,15 @@ function ProjectDetailPage({user, ...props}){
 
     return (
         <>
-        <div className="grid grid-cols-8 mx-12 my-12">
+        <div className="grid grid-cols-8 mx-12 my-12 p-6 border-2 rounded-md shadow-2xl">
 
             <div className="col-span-4">
                 <h1>{project.name}</h1>
-                <p>Created by: {projectCreator?.username}</p>
+                <p className="py-12">Created by: {projectCreator?.username}</p>
                 <img src={project.image} alt="Project Image"/>
             </div>
 
-            <div className="col-span-4 mt-40">
+            <div className="col-span-4 mt-40 px-8">
                <h3 className="text-3xl my-4">Funding Goal</h3>
                <p className="mb-12"> {project.funding_needed} </p>
 
@@ -113,18 +113,18 @@ function ProjectDetailPage({user, ...props}){
 
                 <h3 className="text-3xl my-4">Deadline</h3>
                 <p className="mb-12"> {project.deadline} </p>
+                <div className="flex flex-row-reverse">
+                <button className="w-60 h-16" onClick={() => setShowFundModal(true)}>
+                    Fund this project 
+                </button>
+                {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
+                </div>
             </div>
 
             <div className="col-span-8">
             <p>{project.type}</p>
             <p>{project.description}</p>
-                <button onClick={() => setShowFundModal(true)}>
-                    Fund this project 
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M4 11.0001L12 13L20 11M4 11.0001L12 2M4 11.0001L12 9.00008M20 11L12 2M20 11L12 9.00008M12 2V9.00008M5.5 15L12.0001 22L18.5 15L12 16.5L5.5 15Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                </button>
-                {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
+                
                 <p> {fundingPercentage} Funded</p>
                 <p> [XXXXXX_______] % Funding Progress Bar</p>
              </div>
