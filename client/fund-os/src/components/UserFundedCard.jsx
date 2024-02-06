@@ -2,15 +2,15 @@ function UserFundedCard({oneFundedProject}){
 
 
     return (
-        <div className="one-funded-project mb-10">
-            <h2 className="font-bold">{oneFundedProject.project.name}</h2>
-            <h2>{oneFundedProject.project.funding_needed}</h2>
-            <h2>{oneFundedProject.project.current_funding}</h2>
-            <h2>{oneFundedProject.project.deadline}</h2>
-            <h2>Your funded amount: {oneFundedProject.user_funded_amount}</h2>
-            <h2>Get math 0%</h2>
-            <button>View Project</button>
-        </div>
+       <>
+            <h2 className="col-span-1">{oneFundedProject.project.name}</h2>
+            <h2 className="col-span-1">{oneFundedProject.project.funding_needed}</h2>
+            <h2 className="col-span-1">{oneFundedProject.project["current-funding"]}</h2>
+            <h2 className="col-span-1">{oneFundedProject.project.deadline.split(' ')[0]}</h2>
+            <h2 className="col-span-1">$ {oneFundedProject.user_funded_amount}</h2>
+            <h2 className="col-span-1">Get math 0%</h2>
+            <button className="col-span-1 mb-5">View Project</button>
+            </>
     )
 }
 
