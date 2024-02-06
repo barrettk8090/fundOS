@@ -32,7 +32,7 @@ function FundModal({setShowFundModal, project, user}){
     }
     return (
         <>
-        <dialog className="p-20 mx-60 rounded-lg" open={true}>
+        <dialog className="p-20 mx-60 align-middle rounded-lg" open={true}>
             <h1 className="pb-12 font-bold">Help to fund <br/><span className='animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent'>{project.name}</span>:</h1>
             <p className="px-20 pb-12 text-3xl">Enter the amount of ETH you'd like to contribute toward this projects funding goal. Keep in mind that you cannot contribute more than is required for this project to hit its funding goal.</p>
             <h3>Enter amount:</h3>

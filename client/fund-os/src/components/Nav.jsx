@@ -78,9 +78,9 @@ function Nav({user, setUser}) {
         </div>
 
         <div className="">
-        <ul className="ml-96 flex">
-            <Link to="/create-account"><li className="p-4 mx-4 bg-purple-500 ">Create An Account</li></Link>
-            <Link to="login"><li className="p-4 mx-4 bg-purple-500 ">Login</li></Link>
+        <ul className="flex">
+            <Link to="/create-account"><li className="p-4 mx-4 bg-white ">Create An Account</li></Link>
+            <Link to="login"><li className="p-4 mx-4 bg-white ">Login</li></Link>
         </ul>
         </div>
         </nav>} 
