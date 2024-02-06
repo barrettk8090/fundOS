@@ -53,7 +53,7 @@ function NewProjectSubmission({user}){
         <>        
         <div>
             <h1>Publish Your Project</h1>
-            <p>If you're ready to begin fundraising for a project, fill out this form and hit submit. Please read more details on what it means to submit a project here: INSERT LINK.</p>
+            <p>If you're ready to begin fundraising for a project, fill out this form and hit submit. Be careful when entering your information - you cannot edit a project, aside from the project name, once a submission has been made. If an error is made, projects must be deleted from the system and re-added with updated details. Please read more details on what it means to submit a project here: INSERT LINK.</p>
         </div>
 
         <div>
