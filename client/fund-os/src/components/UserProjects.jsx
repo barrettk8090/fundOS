@@ -1,5 +1,18 @@
 function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}){
 
+    function handleEdit(){
+        console.log('Edit button clicked')
+        fetch(`/api/${user.id}/projects/${singleUserProject.id}`, {
+            method: "PATCH",
+            headers:{'Content-Type':'application/json'},
+        })
+        .then(r => r.json())
+        .then(() => {
+            setUsersProjects(usersProjects.filter(project => project.id !== singleUserProject.id))
+        })
+    }
+    
+
     function handleDelete(){
         fetch(`/api/${user.id}/projects/${singleUserProject.id}`, {
             method: "DELETE",

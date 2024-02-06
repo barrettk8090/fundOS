@@ -24,7 +24,7 @@ function Account({user}){
         <div>
             <h2>Account Details</h2>
 
-            <img src={user?.image} alt="User Image" />
+            <img className="rounded-full w-32" src={user?.image} alt="User Image" />
 
             <p>Your name: {user?.first_name} {user?.last_name}</p>
             <button>Edit</button>
