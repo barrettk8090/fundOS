@@ -55,6 +55,11 @@ function CreateAccount({user, setUser}){
             setUsernameStatus('')
           }
 
+          function handleCreate(){
+            if (user) {
+              navigate(`/dashboard`)}
+          }
+
     return (
         <>
             <div>
@@ -86,7 +91,7 @@ function CreateAccount({user, setUser}){
                     <label for="wallet_address">Wallet Address Temp:</label>
                     <input type="text" id="wallet_address" name="wallet_address" placeholder="Hopefully this will go away." value={newWalletAddress} onChange={(e) => setNewWalletAddress(e.target.value)}/><br/>
 
-                    <button type="Submit">Create Account →</button>
+                    <button type="Submit" onClick={handleCreate()}>Create Account →</button>
                     <h3>{usernameStatus}</h3>
                 </form>
                 <p>Already have an account? <Link to="/login">Log in</Link> instead.</p>
