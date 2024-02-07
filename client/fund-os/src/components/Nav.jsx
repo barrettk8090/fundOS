@@ -77,11 +77,9 @@ function Nav({user, setUser}) {
                     </svg></Link>
         </div>
 
-        <div className="">
-        <ul className="flex">
-            <Link to="/create-account"><li className="p-4 mx-4 bg-white ">Create An Account</li></Link>
-            <Link to="login"><li className="p-4 mx-4 bg-white ">Login</li></Link>
-        </ul>
+        <div className="flex justify-end">
+            <Link to="/create-account"><div className="p-4 mx-4 bg-white font-display">Create An Account</div></Link>
+            <Link to="login"><div className="p-4 mx-4 bg-white font-display">Login</div></Link>
         </div>
         </nav>} 
        </> 
