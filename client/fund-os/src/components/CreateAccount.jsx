@@ -62,34 +62,49 @@ function CreateAccount({user, setUser}){
 
     return (
         <>
-            <div>
-                <h1>Create Account</h1>
+            <div className="lg:mx-60 lg:mt-20 lg:p-12 border-2 rounded-lg border-purple-800">
+                <h1 className="lg:p-4 flex justify-center font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">Create A New Account</h1>
 
 
                 <form onSubmit={handleCreateUser}>
+
+                  <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="username">Username:</label>
-                    <input type="text" id="username_create" name="username" placeholder="Create a unique username" value={newUsername} onChange={(e) => setNewUsername(e.target.value)}/><br/>
-                    
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="username_create" name="username" placeholder="Create a username" value={newUsername} onChange={(e) => setNewUsername(e.target.value)}/><br/>
+                  </div>
+
+                  <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="password">Password:</label>
-                    <input type="text" id="new_password" name="password" placeholder="Create a secure password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}/><br/>
-{/* 
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="new_password" name="password" placeholder="Create a secure password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}/><br/>
+                  </div>
+{/*                 
                     <label for="password">Confirm Password:</label>
                     <input type="password" id="password_confirm" name="password_confirm"/><br/> */}
 
-                    <label for="email">Email:</label>
-                    <input type="text" id="email" name="email" placeholder="Valid email address" value={newEmail} onChange={(e) => setNewEmail(e.target.value)}/><br/>
+                    <div className="lg:pt-12 lg:px-96 font-display text-3xl">
+                      <label for="email">Email:</label>
+                      <input className="px-12 py-4 m-4 rounded-lg" type="text" id="email" name="email" placeholder="Valid email address" value={newEmail} onChange={(e) => setNewEmail(e.target.value)}/><br/>
+                    </div>
 
+                    <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="first_name">First Name:</label>
-                    <input type="text" id="first_name" name="first_name" placeholder="Your first name." value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)}/><br/>
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="first_name" name="first_name" placeholder="Your first name" value={newFirstName} onChange={(e) => setNewFirstName(e.target.value)}/><br/>
+                    </div>
 
+                    <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="last_name">Last Name:</label>
-                    <input type="text" id="last_name" name="last_name" placeholder="Your last name" value={newLastName} onChange={(e) => setNewLastName(e.target.value)}/><br/>
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="last_name" name="last_name" placeholder="Your last name" value={newLastName} onChange={(e) => setNewLastName(e.target.value)}/><br/>
+                    </div>
 
+                    <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="image">Upload Image (URL):</label>
-                    <input type="text" id="profile_image" name="profile_image" placeholder="Direct URL, please!" value={newProfileImage} onChange={(e) => setNewProfileImage(e.target.value)}/><br/>
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="profile_image" name="profile_image" placeholder="Direct URL, please!" value={newProfileImage} onChange={(e) => setNewProfileImage(e.target.value)}/><br/>
+                    </div>
 
+                    <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                     <label for="wallet_address">Wallet Address Temp:</label>
-                    <input type="text" id="wallet_address" name="wallet_address" placeholder="Hopefully this will go away." value={newWalletAddress} onChange={(e) => setNewWalletAddress(e.target.value)}/><br/>
+                    <input className="px-12 py-4 m-4 rounded-lg" type="text" id="wallet_address" name="wallet_address" placeholder="Hopefully this will go away." value={newWalletAddress} onChange={(e) => setNewWalletAddress(e.target.value)}/><br/>
+                    </div>
 
                     <button type="Submit" onClick={handleCreate()}>Create Account →</button>
                     <h3>{usernameStatus}</h3>
