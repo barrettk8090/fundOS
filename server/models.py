@@ -78,6 +78,13 @@ class Project(db.Model, SerializerMixin):
         data = SerializerMixin.to_dict(self)
         data['current_funding'] = self.current_funding
         return data
+    
+    @validates("funding_needed")
+    def validate_funding(self, key, funding_needed):
+        if funding_needed > 0:
+            return funding_needed
+        else:
+            raise AssertionError('Funding amount must be greater than 0')
 
     serialize_rules = ('-user_project.project', '-project_comment.project', '-user.project')
 
