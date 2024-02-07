@@ -4,7 +4,7 @@ function ProjectComment({comment}){
         <div>
             <p>Comment: {comment.comment_text}</p>
             <p>User: {comment.user.username}</p>
-            <img className="w-10 pb-6 rounded-full" src={comment.user.image}></img>
+            <img className="w-12 pb-6 rounded-full" src={comment.user.image}></img>
             <hr/>
         </div>
     )
