@@ -24,7 +24,7 @@ function Dashboard({user}) {
   return (
     <div className="mx-12 my-4">
       <div className="place-content-center">
-        {user ? <h1 className="flex justify-center">@{user.username}'s Dashboard </h1> : null}
+        {user ? <h1 className="flex justify-center font-display">@{user.username}'s Dashboard </h1> : null}
       </div>
 
       <div className="dash-projects">

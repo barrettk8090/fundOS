@@ -50,7 +50,6 @@ function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}
 
     return (
         <div>
-            <h1>Your Projects </h1>
             <p>{singleUserProject.name}</p> 
             
             <div className={` ${editMode ? 'edit' : ''}`}>
