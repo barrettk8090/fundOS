@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    fontFamily:{
+      'display': ['Satoshi']
+    },
     extend: {
       animation: {
         text: 'text 5s ease infinite',

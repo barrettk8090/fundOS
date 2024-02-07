@@ -47,16 +47,22 @@ function Login({user, setUser}){
         <div>
             {user ? <h1>Welcome, {user.username} </h1> : null}
         </div>
-        <div>
-            <h1>Login</h1>
+        <div className="lg:mx-60 lg:mt-20 lg:p-12 border-2 rounded-lg border-purple-800">
+            <h1 className="lg:p-4 flex justify-center font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">Login</h1>
             <form onSubmit={handleSubmit}>
+              <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                 <label for="username">Username:</label>
-                <input type="text" placeholder="Enter username" id="username_login" name="username" value={loginUsername} onChange={(e) => setLoginUsername(e.target.value)}/><br/>
+                <input className="p-4 m-4 rounded-lg" type="text" placeholder="Enter username" id="username_login" name="username" value={loginUsername} onChange={(e) => setLoginUsername(e.target.value)}/><br/>
+              </div>
+              <div className="lg:pt-12 lg:px-96 font-display text-3xl">
                 <label for="password">Password:</label>
-                <input type="password" placeholder="Enter password" id="password_login" name="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}/><br/>
-                <button role="button" className="contrast" type="submit" onClick={handleLogin()} >
+                <input className="p-4 m-4 rounded-lg" type="password" placeholder="Enter password" id="password_login" name="password" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)}/><br/>
+              </div>
+              <div className="flex justify-center my-12">
+                <button role="button" className="font-display py-4 px-8 bg-purple-700" type="submit" onClick={handleLogin()} >
                   Login →
                 </button>
+              </div>
                 <h3>{loginStatus}</h3>
             </form>
         </div>
