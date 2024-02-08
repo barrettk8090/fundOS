@@ -43,15 +43,15 @@ function Nav({user, setUser}) {
             <nav className="justify-end">
                 
             
-            <ul className="flex justify-between">
+            <div className="flex justify-end font-display text-xl">
           
-                <Link to="/dashboard"><li>Dashboard</li></Link>
-                <Link to="/projects"><li>Projects</li></Link>
-                <Link to="/account"><li>Account</li></Link>
-                <Link to="/project/1"><li>ProjectListingTemp</li></Link>
-                <button onClick={handleLogout}>Logout</button>
+                <Link to="/dashboard" className="mx-4">Dashboard</Link>
+                <Link to="/projects" className="mx-4">Projects</Link>
+                <Link to="/account" className="mx-4">Account</Link>
+                <Link to="/project/1" className="mx-4">ProjectListingTemp</Link>
+                <button className="mx-4"className="mx-4" onClick={handleLogout}>Logout</button>
                 
-            </ul>
+            </div>
         </nav>
        </>): 
       
