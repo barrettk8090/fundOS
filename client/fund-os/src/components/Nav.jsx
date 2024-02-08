@@ -55,7 +55,7 @@ function Nav({user, setUser}) {
         </nav>
        </>): 
       
-       <nav className="flex">
+       <nav className="mt-2 flex justify-between w-full">
 
         <div className="justify-start">
             <Link to="/"> <svg xmlns="http://www.w3.org/2000/svg" width="150" height="50" viewBox="0 0 708 250" fill="none">
@@ -77,10 +77,14 @@ function Nav({user, setUser}) {
                     </svg></Link>
         </div>
 
-        <div className="flex justify-end">
-            <Link to="/create-account"><div className="p-4 mx-4 bg-white font-display">Create An Account</div></Link>
-            <Link to="login"><div className="p-4 mx-4 bg-white font-display">Login</div></Link>
-        </div>
+        <div className="flex">
+        <Link to="/create-account">
+            <div className="p-4 mx-4 bg-white font-display">Create An Account</div>
+        </Link>
+        <Link to="login">
+            <div className="p-4 mx-4 bg-white font-display">Login</div>
+        </Link>
+      </div>
         </nav>} 
        </> 
     );
