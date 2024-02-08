@@ -30,13 +30,13 @@ function Dashboard({user}) {
       <div className="dash-projects">
           <h2 className="my-6 flex justify-center font-bold text-xl">Your Projects</h2>
           <p className="mb-4 flex justify-center">A list of projects that you are currently funding.</p>
-          <div className="grid grid-cols-7 grid-rows-7 bg-slate-500 rounded-md border-2 border-fuchsia-50 p-12">
-              <h3 className="font-bold col-span-1">Project Name</h3>
+          <div className="grid grid-cols-7 grid-rows-7 bg-slate-500 rounded-md border-2 border-fuchsia-50 p-12 font-display">
+              <h3 className="font-bold col-span-1">Name</h3>
               <h3 className="font-bold col-span-1">Goal</h3>
               <h3 className="font-bold col-span-1">Current Funding</h3>
               <h3 className="font-bold col-span-1">Deadline</h3>
-              <h3 className="font-bold col-span-1">You funded:</h3>
-              <h3 className="font-bold col-span-1">Percentage</h3>
+              <h3 className="font-bold col-span-1">Your Funding</h3>
+              <h3 className="font-bold col-span-1">Percentage Funded</h3>
               <h3 className="font-bold col-span-1">Project Link</h3>
               <div className="col-span-7"><hr/></div>
             {displayUserFundedProject}

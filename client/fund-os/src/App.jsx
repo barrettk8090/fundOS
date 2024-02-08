@@ -26,6 +26,7 @@ import RadixTests from './components/RadixTests';
 function App() {
 
   const [user, setUser] = useState(null)
+  const [singleProject, setSingleProject] = useState(null)
 
   useEffect(() => {
     fetch('/api/session')

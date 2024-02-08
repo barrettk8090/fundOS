@@ -197,8 +197,13 @@ class User_Project_By_Id(Resource):
     def get(self, user_id):
         users_projects = User_Project.query.filter(User_Project.user_id == user_id).all()
         user_project_dict =[]
-        for project in users_projects:
-            user_project_dict.append(project.to_dict())
+        for user_project in users_projects:
+            project = Project.query.filter(Project.id == user_project.project_id).first()
+            current_funding = db.session.query(db.func.sum(User_Project.user_funded_amount)).filter(User_Project.project_id == project.id).scalar() or 0
+            project_dict = project.to_dict()
+            project_dict['current_funding'] = current_funding
+            project_dict['user_funded_amount'] = user_project.user_funded_amount
+            user_project_dict.append(project_dict)
         return make_response(user_project_dict, 200)
 
 api.add_resource(User_Project_By_Id, '/user_funded_project/<int:user_id>/')
@@ -211,7 +216,8 @@ class Fund_A_Project(Resource):
             new_fund_amount = User_Project(user_id=user_id, project_id=project_id, user_funded_amount=data['user_funded_amount'])
             db.session.add(new_fund_amount)
             db.session.commit()
-            return make_response(new_fund_amount.to_dict(), 201)
+            project = Project.query.get(project_id)
+            return make_response(project.to_dict(), 201)
         except:
             return make_response({"errors": ["validation errors"]}, 400)
         

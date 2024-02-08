@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-function FundModal({setShowFundModal, project, user}){
+function FundModal({setShowFundModal, project, user, updateAmountRaised}){
 
   const [contribution, setContribution] = useState(0);
 
@@ -23,6 +23,10 @@ function FundModal({setShowFundModal, project, user}){
         } else {
           console.error('Check the information that you entered and try again.');
         }
+      })
+      .then(data => {
+        console.log(data);
+        updateAmountRaised(data.current_funding);
       })
       .catch(error => console.error('Error:', error));
   }

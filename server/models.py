@@ -73,6 +73,7 @@ class Project(db.Model, SerializerMixin):
             .filter(User_Project.project_id == self.id)\
             .scalar()
             return subq if subq is not None else 0
+            
     
     def to_dict(self):
         data = SerializerMixin.to_dict(self)

@@ -2,7 +2,7 @@ import ProjectCard from "./ProjectCard";
 import {useEffect, useState} from "react"; 
 
 //For each project, render a project card.
-function AllProjects(){
+function AllProjects({}){
 
     const [allProjects, setAllProjects] = useState([])
     const [allUsers, setAllUsers] = useState([])

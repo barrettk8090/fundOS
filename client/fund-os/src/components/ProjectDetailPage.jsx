@@ -12,10 +12,19 @@ function ProjectDetailPage({user, ...props}){
     const [projectComments, setProjectComments] = useState([])
     const [singleProject, setSingleProject] = useState(null)
     const [allUsers, setAllUsers] = useState([])
+    
 
     //Modal popup state
     const [showFundModal, setShowFundModal] = useState(false);
+    const [amountRaised, setAmountRaised] = useState(0);
 
+    function updateAmountRaised(newAmount) {
+        setProject({
+          ...project,
+          current_funding: newAmount
+        });
+        setAmountRaised(newAmount);
+      }
 
     //Fetching project data
     useEffect(() => {
@@ -117,7 +126,7 @@ function ProjectDetailPage({user, ...props}){
                 <button className="w-60 h-16" onClick={() => setShowFundModal(true)}>
                     Fund this project 
                 </button>
-                {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} />}
+                {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} updateAmountRaised={updateAmountRaised}/>}
                 </div>
             </div>
 
