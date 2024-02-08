@@ -12,7 +12,7 @@ function UserFundedCard({oneFundedProject}){
             <h2 className="col-span-1 border-b-2 py-4">{oneFundedProject.deadline.split(' ')[0]}</h2>
             <h2 className="col-span-1 border-b-2 py-4">$ {oneFundedProject.user_funded_amount}</h2>
             <h2 className="col-span-1 border-b-2 py-4">{percentageFunded}</h2>
-            <Link to={`/project/${oneFundedProject.id}`} className="col-span-1 mb-5 border-b-2 my-4"><button>View Project</button></Link>
+            <Link to={`/project/${oneFundedProject.id}`} className="col-span-1 mb-5 border-b-2 my-4 "><button>View Project</button></Link>
             </>
     )
 }

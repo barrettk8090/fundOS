@@ -45,8 +45,8 @@ function Dashboard({user}) {
 
       <div className="dash-trending">
           <div className="indiv-trending">
-              <h2>Trending Projects</h2>
-              <p>A list of projects that are currently trending.</p>
+              <h1 className="flex justify-center font-display">Hot Projects</h1>
+              <p>These projects are close to hitting their funding goal! Check them out now to help them reach the finish line.</p>
           </div>
       </div>
     </div>
