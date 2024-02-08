@@ -22,8 +22,10 @@ function NewProjectSubmission({user}){
             image: projectImage,
             description: projectDescription,
             funding_needed: fundingNeeded,
+            current_funding: 0,
             deadline: deadline, 
         };
+        console.log(formData)
     
         try {
             const response = await fetch(`/api/${user.id}/projects/`, {
@@ -36,17 +38,14 @@ function NewProjectSubmission({user}){
                 throw new Error(`HTTP error! status: ${response.status}`);
             } else {
                 const data = await response.json();
-                const projectId = data.id; // assuming the response contains an 'id' field
+                const projectId = data.id;
                 console.log('Project ID:', projectId)
                 console.log('Form submitted successfully');
-                navigate(`/lets-do-this/${projectId}`) // pass the project ID in the URL;
+                navigate(`/lets-do-this/${projectId}`) ;
             }
         } catch (error) {
             console.error('An error occurred while submitting the form: ', error);
         }
-        
-        //Need to get the project id from the response and navigate to the project detail page
-        
     };
 
     return (

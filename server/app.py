@@ -131,6 +131,7 @@ class Projects_By_User(Resource):
             user_project_dict.append(project.to_dict())
         return make_response(user_project_dict, 200)
     def post(self, user_id):
+        print(request.json)
         try:
             data = request.get_json()
             new_project = Project(name=data['name'], type=data['type'], image=data['image'], description=data['description'], funding_needed=data['funding_needed'], deadline=datetime.strptime(data['deadline'], '%Y-%m-%d'), user_id=user_id, status=True)

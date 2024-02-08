@@ -68,7 +68,6 @@ class Project(db.Model, SerializerMixin):
 
     @hybrid_property
     def current_funding(self):
-            # Define a subquery to get the sum of user_funded_amount for this project
             subq = db.session.query(func.sum(User_Project.user_funded_amount))\
             .filter(User_Project.project_id == self.id)\
             .scalar()
@@ -86,6 +85,18 @@ class Project(db.Model, SerializerMixin):
             return funding_needed
         else:
             raise AssertionError('Funding amount must be greater than 0')
+        
+    @validates("current_funding")
+    def validate_current_funding(self, key, current_funding):
+        if current_funding > self.funding_needed:
+            raise AssertionError('Current funding cannot exceed funding needed')
+        return current_funding
+    
+    @validates("deadline")
+    def validate_deadline(self, key, deadline):
+        if deadline < datetime.utcnow():
+            raise AssertionError('Deadline cannot be in the past')
+        return deadline
 
     serialize_rules = ('-user_project.project', '-project_comment.project', '-user.project')
 
