@@ -49,7 +49,7 @@ function Nav({user, setUser}) {
                 <Link to="/projects" className="mx-4">Projects</Link>
                 <Link to="/account" className="mx-4">Account</Link>
                 <Link to="/project/1" className="mx-4">ProjectListingTemp</Link>
-                <button className="mx-4"className="mx-4" onClick={handleLogout}>Logout</button>
+                <button className="mx-4" onClick={handleLogout}>Logout</button>
                 
             </div>
         </nav>
