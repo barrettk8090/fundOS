@@ -109,6 +109,7 @@ function ProjectDetailPage({user, ...props}){
             <div className="col-span-4">
                 <h1>{project.name}</h1>
                 <p className="py-12">Created by: {projectCreator?.username}</p>
+                <p>{project.type}</p>
                 <img src={project.image} alt="Project Image"/>
             </div>
 
@@ -123,38 +124,38 @@ function ProjectDetailPage({user, ...props}){
                 <p className="mb-12"> {project.deadline} </p>
                 <div className="flex flex-row-reverse">
                 <button className="w-60 h-16" onClick={() => setShowFundModal(true)}>
-                    Fund this project 
+                    Fund this project →
                 </button>
                 {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} updateAmountRaised={updateAmountRaised}/>}
                 </div>
             </div>
+        </div>
 
-            <div className="col-span-8">
-    <p>{project.type}</p>
+        <div className="mx-32 my-12">
+        <h2 className="flex justify-center text-5xl pb-8">Funding Progress</h2>
+                <div className="w-full bg-slate-200 rounded-full h-24 dark:bg-gray-700 overflow-hidden"> 
+                    <div className="bg-purple-600 h-24 rounded-full transition-all duration-500 ease-linear" style={{ width: fundingPercentage }}> <p className="flex justify-center pt-8 text-xl">{fundingPercentage} Funded</p>
+                    </div>
+                </div>
+        </div>
 
-    
-    <p> {fundingPercentage} Funded</p>
-    <div className="w-full bg-slate-200 rounded-full h-6 dark:bg-gray-700 overflow-hidden">
-        <div className="bg-purple-600 h-6 rounded-full transition-all duration-500 ease-linear" style={{ width: fundingPercentage }}></div>
-    </div>
-</div>
-            </div>
+
 
         {/* <div>
             <h2> TBD - Project Updates</h2>
         </div> */}
 
-        <div className="bg-blue-900 p-24 mx-4 shadow-xl">
+        <div className="bg-blue-900 p-24 mx-12 shadow-xl rounded-lg">
             <h2 className="flex justify-center text-5xl">About This Project</h2>
             <p className="pt-12 mx-32 text-2xl leading-10">{project.description}</p>
         </div>
 
-        <div>
-            <h2 className="text-6xl my-4">Funders</h2>
+        <div className="bg-green-900 p-24 mx-12 my-12 shadow-xl rounded-lg">
+            <h2 className="flex justify-center text-5xl">Funders</h2>
             {displayProjectFunders}
         </div>
 
-        <div className="bg-purple-900 p-24 mx-4 shadow-xl">
+        <div className="bg-purple-900 p-24 mx-12 shadow-xl rounded-lg">
             <h2 className="flex justify-center text-5xl">Comments</h2>
             {displayProjectComments}
      
