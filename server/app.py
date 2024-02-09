@@ -138,8 +138,9 @@ class Projects_By_User(Resource):
             db.session.add(new_project)
             db.session.commit()
             return make_response(new_project.to_dict(), 201)
-        except:
-            return make_response({"errors": ["validation errors"]}, 400)
+        except Exception as e:
+            print(f"Exception during POST: {e}")
+            return make_response({"errors": ["validation errors"]},  400)
         
 api.add_resource(Projects_By_User, '/<int:user_id>/projects/')
         

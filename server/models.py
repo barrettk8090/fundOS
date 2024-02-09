@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import validates
 from sqlalchemy import MetaData, event, func, select
 from sqlalchemy_serializer import SerializerMixin
-import datetime
+from datetime import datetime
 
 from sqlalchemy.ext.hybrid import hybrid_property
 from config import *
@@ -18,8 +18,8 @@ class User(db.Model, SerializerMixin):
     last_name = db.Column(db.String, nullable=False)
     #Image set to string for SRC... for now...
     image = db.Column(db.String, nullable=True)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    updated_at = db.Column(db.DateTime, default=datetime.utcnow)
     wallet_address = db.Column(db.String, nullable=True)
 
     user_project = db.relationship('User_Project', back_populates='user')
@@ -59,7 +59,7 @@ class Project(db.Model, SerializerMixin):
     description = db.Column(db.String, nullable=False) #Keep as string for MVP
     funding_needed = db.Column(db.Integer, nullable=False)
     deadline = db.Column(db.DateTime, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     status = db.Column(db.Boolean, default=True) #True = Active, False = Inactive
 
@@ -121,7 +121,7 @@ class Project_Comment(db.Model, SerializerMixin):
 
     id = db.Column(db.Integer, primary_key=True)
     comment_text = db.Column(db.String, nullable=False)
-    created_at = db.Column(db.DateTime, default=datetime.datetime.utcnow)
+    created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     project_id = db.Column(db.Integer, db.ForeignKey('projects.id'))

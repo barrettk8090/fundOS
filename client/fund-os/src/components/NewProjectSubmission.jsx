@@ -21,7 +21,7 @@ function NewProjectSubmission({user}){
             type: projectType,
             image: projectImage,
             description: projectDescription,
-            funding_needed: fundingNeeded,
+            funding_needed: parseInt(fundingNeeded,  10),
             current_funding: 0,
             deadline: deadline, 
         };
