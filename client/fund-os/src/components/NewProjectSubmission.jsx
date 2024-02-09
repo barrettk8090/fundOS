@@ -9,13 +9,26 @@ function NewProjectSubmission({user}){
     const [projectImage, setProjectImage] = useState("")
     const [fundingNeeded, setFundingNeeded] = useState("")
     const [deadline, setDeadline] = useState("")
+    const [isDeadlinePast, setIsDeadlinePast] = useState(false)
 
     const navigate = useNavigate();
+
+    const handleDeadlineChange = (e) => {
+        const newDeadline = new Date(e.target.value);
+        const now = new Date();
+        setIsDeadlinePast(newDeadline < now);
+        setDeadline(e.target.value);
+    }
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+
+        if (isDeadlinePast) {
+            return;
+        }
+
         const formData = {
             name: projectName,
             type: projectType,
@@ -95,7 +108,8 @@ function NewProjectSubmission({user}){
 
                         <label>
                             Deadline:
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="deadline" placeholder="2024-01-01"value={deadline} onChange={(e) => setDeadline(e.target.value)}/>
+                            {isDeadlinePast && <p style={{color: 'red'}}>Deadline cannot be in the past</p>}
+                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="date" name="deadline" placeholder="2024-01-01"value={deadline} onChange={handleDeadlineChange}/>
                         </label>
 
                         <button type="submit">Submit</button>
@@ -105,8 +119,9 @@ function NewProjectSubmission({user}){
             </div> 
         </>
 
-
+    
     )
-}
+    }
+
 
 export default NewProjectSubmission

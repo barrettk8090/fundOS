@@ -18,6 +18,7 @@ function ProjectDetailPage({user, ...props}){
     const [showFundModal, setShowFundModal] = useState(false);
     const [amountRaised, setAmountRaised] = useState(0);
 
+    //Update amount raised
     function updateAmountRaised(newAmount) {
         setProject({
           ...project,
@@ -26,13 +27,11 @@ function ProjectDetailPage({user, ...props}){
         setAmountRaised(newAmount);
       }
 
-    //Fetching project data
+    //Fetching single project
     useEffect(() => {
         if (location.state) {
-            // If state is passed, use it
             setSingleProject(location.state.singleProject);
         } else {
-            // Otherwise, fetch the project data
             fetch(`/api/projects/${id}`)
                 .then(r => r.json())
                 .then(data => setProject(data));
