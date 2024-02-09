@@ -130,16 +130,23 @@ function ProjectDetailPage({user, ...props}){
             </div>
 
             <div className="col-span-8">
-            <p>{project.type}</p>
-            <p>{project.description}</p>
-                
-                <p> {fundingPercentage} Funded</p>
-                <p> [XXXXXX_______] % Funding Progress Bar</p>
-             </div>
+    <p>{project.type}</p>
+
+    
+    <p> {fundingPercentage} Funded</p>
+    <div className="w-full bg-slate-200 rounded-full h-6 dark:bg-gray-700 overflow-hidden">
+        <div className="bg-purple-600 h-6 rounded-full transition-all duration-500 ease-linear" style={{ width: fundingPercentage }}></div>
+    </div>
+</div>
             </div>
 
-        <div>
+        {/* <div>
             <h2> TBD - Project Updates</h2>
+        </div> */}
+
+        <div className="bg-blue-900 p-24 mx-4 shadow-xl">
+            <h2 className="flex justify-center text-5xl">About This Project</h2>
+            <p className="pt-12 mx-32 text-2xl leading-10">{project.description}</p>
         </div>
 
         <div>
@@ -147,13 +154,11 @@ function ProjectDetailPage({user, ...props}){
             {displayProjectFunders}
         </div>
 
-        <div className="project-comments">
-            <h2>Comments</h2>
+        <div className="bg-purple-900 p-24 mx-4 shadow-xl">
+            <h2 className="flex justify-center text-5xl">Comments</h2>
             {displayProjectComments}
-        </div>
-
-        <div className="add-comment">
-            <h3>Add a Comment</h3>
+     
+            <h3 className="flex justify-center text-2xl py-4">Give this project a shoutout! Leave a comment below to let this creator know how excited you are to get this funded.</h3>
             <form onSubmit={handleSubmit}> 
                 <label>
                     Comment:
