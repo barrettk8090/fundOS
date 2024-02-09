@@ -50,21 +50,21 @@ function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}
 
     return (
         <div>
-            <p>{singleUserProject.name}</p> 
+            <p className="pt-4 text-3xl">{singleUserProject.name}</p> 
             
             <div className={` ${editMode ? 'edit' : ''}`}>
-            <button onClick={()=> handleEdit()}> {editMode ? "Cancel" : "Edit Project Name"}</button> 
-            {editMode && (
-                <div>
-                    <form onSubmit={handleEditSave}>
-                        <input type="text" placeholder="Enter a new project name" value={projectEditInput} onChange={changeProjectName}/>
-                        <button type="submit">Save</button>
-                    </form>
-                </div>
+                <button className="my-2" onClick={()=> handleEdit()}> {editMode ? "Cancel" : "Edit Project Name"}</button> 
+                {editMode && (
+                    <div>
+                        <form onSubmit={handleEditSave}>
+                            <input className="w-80 h-10 rounded-lg p-2 mb-2" type="text" placeholder="Enter a new project name" value={projectEditInput} onChange={changeProjectName}/>
+                            <button type="submit">Save</button>
+                        </form>
+                    </div>
             )}
-        </div>
+            </div>
             
-            <button onClick={handleDelete}>Delete Project</button>
+            <button className="pr-6 pl-6" onClick={handleDelete}>Delete Project</button>
            
         </div>
     );

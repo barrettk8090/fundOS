@@ -5,7 +5,7 @@ function ProjectCard({singleProject, handleProjectClick, username}){
     return (
         <div className="project-card bg-slate-900 my-8 grid grid-cols-8 rounded-md">
             <div className="col-span-3">
-                <img className="p-4" src={singleProject.image} alt="Project Image"/>
+                <img className="py-12" src={singleProject.image} alt="Project Image"/>
             </div>
 
             <div className="mx-12 my-12 col-span-5">

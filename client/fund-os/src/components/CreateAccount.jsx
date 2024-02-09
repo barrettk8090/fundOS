@@ -57,7 +57,7 @@ function CreateAccount({user, setUser}){
 
           function handleCreate(){
             if (user) {
-              navigate(`/dashboard`)}
+              navigate(`/projects`)}
           }
 
     return (

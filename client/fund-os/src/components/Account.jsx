@@ -44,7 +44,7 @@ function Account({user}){
                 <h1 className="pb-6 flex justify-center font-display">Your Projects</h1>
                 <p>A list of projects that you are currently raising money for.</p>
                 {displayUsersProjects}
-                <p> A note about editing projects... </p>
+                {/* <p> A note about editing projects... </p> */}
             </div>
                 
             <div className="col-span-2 bg-purple-800 mx-6 my-8 p-6 rounded-md">
