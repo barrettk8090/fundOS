@@ -65,25 +65,25 @@ function NewProjectSubmission({user}){
         <>    
             <div>
                 <h1 className="mx-12 my-8 lg:text-6xl flex justify-center animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent font-bold">Publish Your Project</h1>
-                <p className="lg:mx-48 font-bold">If you're ready to begin fundraising for a project, fill out this form and hit submit. Be careful when entering your information - you cannot edit a project, aside from the project name, once a submission has been made. If an error is made, projects must be deleted from the system and re-added with updated details. Please read more details on what it means to submit a project here: INSERT LINK.</p>
+                <p className="lg:mx-48 font-bold">If you're ready to begin fundraising for a project, fill out this form and hit submit. Be careful when entering your information - you cannot edit a project, aside from the project name, once a submission has been made. If an error is made, projects must be deleted from the system and re-added with updated details. 
+                {/* Please read more details on what it means to submit a project here: INSERT LINK. */}
+                </p>
             </div>
+               
+            <form className="grid grid-cols-2 lg:mx-48 lg:my-6" onSubmit={handleSubmit}>
+                <label className="font-bold col-span-1 mb-6">
+                    Project Name:  
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_name" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+                </label>
 
-            <div className="grid grid-cols-2">   
-                <div className="lg:mx-48">
-                    <form onSubmit={handleSubmit}>
-                        <label className="font-bold">
-                            Project Name: 
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12 col-span-1" type="text" name="project_name" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
-                        </label>
-                
-                        <label>
-                            Project Description:
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_description" value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}/>
-                        </label>
+                <label className="col-span-1">
+                    Project Description:
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_description" value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}/>
+                </label>
 
                         <label>
                             Project Type:
-                            <select className="rounded-md border-2 border-purple-600 w-96 h-12" name="type" value={projectType} onChange={(e) => setProjectType(e.target.value)} required>
+                            <select className="rounded-md border-2 border-purple-600 w-96 h-12 mb-6" name="type" value={projectType} onChange={(e) => setProjectType(e.target.value)} required>
                                 <option>Arts & Lifestyle</option>
                                 <option>Design</option>
                                 <option>Education</option>
@@ -110,13 +110,13 @@ function NewProjectSubmission({user}){
                             Deadline:
                             {isDeadlinePast && <p style={{color: 'red'}}>Deadline cannot be in the past</p>}
                             <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="date" name="deadline" placeholder="2024-01-01"value={deadline} onChange={handleDeadlineChange}/>
-                        </label>
+                        </label> 
 
-                        <button type="submit">Submit</button>
+                        <button className="col-span-2 my-12 bg-slate-500 mx-60" type="submit">Submit →</button>
 
                     </form>
-                </div>
-            </div> 
+                
+
         </>
 
     
