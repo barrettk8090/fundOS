@@ -8,7 +8,7 @@ function Home({user, setUser}){
             <h1 className="my-12 flex justify-center text-3xl lg:text-7xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-center font-display">Welcome to the future <br></br> of crowdfunding <br/> (eventually).</h1>
             <p className="mb-12 flex justify-center text-2xl text-center font-display"><span className="pr-4">Create projects with ease.</span> <span className="pr-4">Get funded by backers. </span>Receive immediate payouts.</p>
             <div className="flex justify-center font-display">
-            <Link to="/create-account"><button>Get Started</button></Link>
+            <Link to="/create-account"><button>Get Started →</button></Link>
             </div>
         </div>
 

@@ -57,8 +57,12 @@ function FundModal({setShowFundModal, project, user, updateAmountRaised}){
                 <h3>Enter amount:</h3>
                 <form onSubmit={handleContribution}>
                     <input
-                    value={contribution}
-                    onChange={e => setContribution(e.target.value)}></input>
+                      value={contribution}
+                      onChange={e => {
+                        const value = e.target.value;
+                        if (value >= 0) {
+                          setContribution(value)}}}>
+                          </input>
                     <button type="submit">Fund Project</button>
                 </form>
                 <div className="flex justify-center">
