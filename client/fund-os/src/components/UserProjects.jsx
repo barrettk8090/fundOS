@@ -48,12 +48,14 @@ function UserProjects({singleUserProject, setUsersProjects, usersProjects, user}
         })
     }
 
+    
+
     return (
         <div>
             <p className="pt-4 text-3xl">{singleUserProject.name}</p> 
             
             <div className={` ${editMode ? 'edit' : ''}`}>
-                <button className="my-2" onClick={()=> handleEdit()}> {editMode ? "Cancel" : "Edit Project Name"}</button> 
+                <button className="my-2" onClick={()=> handleEdit()}> {editMode ? "Cancel" : `Edit Project Name`}</button> 
                 {editMode && (
                     <div>
                         <form onSubmit={handleEditSave}>

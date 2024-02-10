@@ -12,11 +12,10 @@
   font-family: Satoshi, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+/* 
+  color-scheme: light dark; */
 
-  color-scheme: light dark;
-
-  background-color: #242424;
-
+  background-color: #00001C; 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -35,6 +34,20 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
+
+h1, h2, h3, h4, h5, h6{
+  color: #20BF65;
+}
+
+p{
+  color: #FFD628;
+}
+
+Link{
+  color: #20BF65;
+
+}
+
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -42,7 +55,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #FF3898;
   cursor: pointer;
   transition: border-color 0.25s;
 }

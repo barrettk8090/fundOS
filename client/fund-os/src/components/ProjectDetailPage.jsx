@@ -121,7 +121,7 @@ function ProjectDetailPage({user, ...props}){
                 <p className="mb-12"> {project.current_funding} </p>
 
                 <h3 className="text-3xl my-4">Deadline</h3>
-                <p className="mb-12"> {project.deadline} </p>
+                <p className="mb-12"> {project.deadline.split(' ')[0]} </p>
                 <div className="flex flex-row-reverse">
                 <button className="w-60 h-16" onClick={() => setShowFundModal(true)}>
                     Fund this project →
