@@ -107,7 +107,7 @@ function ProjectDetailPage({user, ...props}){
         <div className="grid grid-cols-8 mx-12 my-12 p-6 border-2 rounded-md shadow-2xl">
 
             <div className="col-span-4">
-                <h1>{project.name}</h1>
+                <h1 className="lg:text-6xl">{project.name}</h1>
                 <p className="py-12">Created by: {projectCreator?.username}</p>
                 <p>{project.type}</p>
                 <img src={project.image} alt="Project Image"/>

@@ -22,7 +22,7 @@ function Account({user}){
     return(
         <>
         
-        <h1 className="mx-12 my-8 flex justify-center font-display">Account Details</h1>
+        <h1 className="mx-12 my-8 flex justify-center lg:text-6xl font-display">Account Details</h1>
 
         <div className=" grid grid-cols-2">
             <div className=" bg-purple-800 ml-8 mr-4 p-6 rounded-md col-span-1">

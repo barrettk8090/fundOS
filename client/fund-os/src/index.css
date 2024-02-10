@@ -67,6 +67,18 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+.dash-bg{
+  background-color: #F2CD5D;
+}
+
+.dash-bg h3 {
+  color: #3A1772;
+}
+
+.dash-bg > h2 {
+  color: #3A1772;
+}
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
