@@ -54,8 +54,8 @@ function FundModal({setShowFundModal, project, user, updateAmountRaised}){
             <>
                 <h1 className="pb-12 font-bold">Help to fund <br/><span className='animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent'>{project.name}</span>:</h1>
                 <p className="px-20 pb-12 text-3xl">Enter the amount of ETH you'd like to contribute toward this projects funding goal. Keep in mind that you cannot contribute more than is required for this project to hit its funding goal.</p>
-                <h3>Enter amount:</h3>
-                <form onSubmit={handleContribution}>
+                <h3 className="flex justify-center text-3xl">Enter amount:</h3>
+                <form className="p-4 flex justify-center" onSubmit={handleContribution}>
                     <input
                       value={contribution}
                       onChange={e => {
@@ -63,10 +63,10 @@ function FundModal({setShowFundModal, project, user, updateAmountRaised}){
                         if (value >= 0) {
                           setContribution(value)}}}>
                           </input>
-                    <button type="submit">Fund Project</button>
+                    <button className="text-xl" type="submit">Fund Project</button>
                 </form>
                 <div className="flex justify-center">
-                  <button onClick={handleClose}>Cancel</button>
+                  <button className="my-4" onClick={handleClose}>Cancel</button>
                 </div>
             </>
           )}

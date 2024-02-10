@@ -79,6 +79,15 @@ button:focus-visible {
 .dash-bg > h2 {
   color: #3A1772;
 }
+
+.project-card{
+  background-color: #F2CD5D;
+}
+
+.proj-card-text{
+  color: #3A1772;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

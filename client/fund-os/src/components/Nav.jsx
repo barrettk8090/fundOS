@@ -38,7 +38,7 @@ function Nav({user, setUser}) {
     </div>
     <div className="flex">
         <Link to="/create-new-project">
-            <button className="mx-4 p-4 font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent">Start A Project +</button>
+            <button className="mx-4 p-4 font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-xl">Start A Project +</button>
         </Link>
         <div className="mx-4 mb-6 p-4 bg-pink-600 font-display">WalletConnect</div>
     </div>
