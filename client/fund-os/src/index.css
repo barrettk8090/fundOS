@@ -15,7 +15,7 @@
 /* 
   color-scheme: light dark; */
 
-  background-color: #00001C; 
+  background-color: #3A1772; 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -23,7 +23,7 @@
 }
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #D741A7;
   text-decoration: inherit;
 }
 a:hover {
@@ -36,11 +36,12 @@ h1 {
 }
 
 h1, h2, h3, h4, h5, h6{
-  color: #20BF65;
+  color: #D741A7;
 }
 
 p{
-  color: #FFD628;
+  color: #89B8D2;
+  ;
 }
 
 Link{
@@ -55,7 +56,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #FF3898;
+  background-color: white;
   cursor: pointer;
   transition: border-color 0.25s;
 }
