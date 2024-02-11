@@ -71,17 +71,17 @@ function NewProjectSubmission({user}){
             </div>
                
             <form className="grid grid-cols-2 lg:mx-48 lg:my-6" onSubmit={handleSubmit}>
-                <label className="font-bold col-span-1 mb-6">
+                <label className="flex justify-center col-span-2 mb-6">
                     Project Name:  
                     <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_name" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
                 </label>
 
-                <label className="col-span-1">
-                    Project Description:
-                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_description" value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}/>
+                <label className="col-span-2 flex justify-center">
+                    Project Description: 
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-60" type="text" name="project_description" value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}/>
                 </label>
 
-                        <label>
+                        <label className="col-span-1 flex justify-center py-4">
                             Project Type:
                             <select className="rounded-md border-2 border-purple-600 w-96 h-12 mb-6" name="type" value={projectType} onChange={(e) => setProjectType(e.target.value)} required>
                                 <option>Arts & Lifestyle</option>
@@ -96,23 +96,23 @@ function NewProjectSubmission({user}){
                             </select>
                         </label>
 
-                        <label>
+                        <label className="col-span-1 flex justify-center py-4">
                             Project Image:
                             <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="img" name="project_image" value={projectImage} onChange={(e) => setProjectImage(e.target.value)}/>
                         </label>
 
-                        <label>
+                        <label className="col-span-1 flex justify-center">
                             Funding Needed:
                             <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="funding_needed" value={fundingNeeded} onChange={(e) => setFundingNeeded(e.target.value)}/>
                         </label>
 
-                        <label>
+                        <label className="col-span-1 flex justify-center">
                             Deadline:
                             {isDeadlinePast && <p style={{color: 'red'}}>Deadline cannot be in the past</p>}
                             <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="date" name="deadline" placeholder="2024-01-01"value={deadline} onChange={handleDeadlineChange}/>
                         </label> 
 
-                        <button className="col-span-2 my-12 bg-slate-500 mx-60" type="submit">Submit →</button>
+                        <button className="col-span-2 my-12 bg-slate-500 mx-60" type="submit">Launch 🚀 →</button>
 
                     </form>
                 
