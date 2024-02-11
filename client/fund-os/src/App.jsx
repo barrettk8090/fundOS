@@ -8,7 +8,7 @@ import {
   Router,
   Link
 } from "react-router-dom";
-// import { Flex, Text, Button, Select} from '@radix-ui/themes';
+import {ethers} from 'ethers'
 
 import Home from './components/Home'
 import Nav from './components/Nav'
