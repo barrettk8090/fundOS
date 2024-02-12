@@ -1,8 +1,11 @@
 // import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import {useState} from "react";
 import {Link} from "react-router-dom";
 import {useNavigate} from "react-router-dom";
+import {ethers} from "ethers";
 
-function Nav({user, setUser}) {
+function Nav({user, setUser, ethAddress, setEthAddress, connectWallet}) {
+
     const navigate = useNavigate();
 
     function handleLogout() {
@@ -40,7 +43,8 @@ function Nav({user, setUser}) {
         <Link to="/create-new-project">
             <button className="mx-4 p-4 font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-xl">Start A Project +</button>
         </Link>
-        <div className="mx-4 mb-6 p-4 bg-pink-600 font-display">WalletConnect</div>
+        <div className="mx-4 mb-6 p-4 bg-pink-600 font-display" onClick={connectWallet}>WalletConnect</div>
+        {ethAddress && <p>Your Ethereum address: {ethAddress}</p>}
     </div>
 </div>
             <nav className="justify-end">

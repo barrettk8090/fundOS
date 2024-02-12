@@ -4,7 +4,7 @@ import AccountHistory from "./AccountHistory";
 import UserProjects from "./UserProjects";
 
 
-function Account({user}){
+function Account({user, ethAddress}){
 
     const [usersProjects, setUsersProjects] = useState([])
 
@@ -38,6 +38,7 @@ function Account({user}){
                 <button>Edit</button>
 
                 <p>Wallet Address: {user?.wallet_address}</p> 
+                <p>Read Wallet Address: {ethAddress}</p>
             </div>
 
             <div className=" bg-purple-800 mr-8 ml-4 p-6 rounded-md col-span-1">

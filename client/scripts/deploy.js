@@ -1,33 +1,61 @@
-// We require the Hardhat Runtime Environment explicitly here. This is optional
-// but useful for running the script in a standalone fashion through `node <script>`.
-//
-// You can also run a script with `npx hardhat run <script>`. If you do that, Hardhat
-// will compile your contracts, add the Hardhat Runtime Environment's members to the
-// global scope, and execute the script.
-const hre = require("hardhat");
+// This is a script for deploying your contracts. You can adapt it to deploy
+// yours, or create new ones.
+
+const path = require("path");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const unlockTime = currentTimestampInSeconds + 60;
+  // This is just a convenience check
+  if (network.name === "hardhat") {
+    console.warn(
+      "You are trying to deploy a contract to the Hardhat Network, which" +
+        "gets automatically created and destroyed every time. Use the Hardhat" +
+        " option '--network localhost'"
+    );
+  }
 
-  const lockedAmount = hre.ethers.parseEther("0.001");
-
-  const lock = await hre.ethers.deployContract("Lock", [unlockTime], {
-    value: lockedAmount,
-  });
-
-  await lock.waitForDeployment();
-
+  // ethers is available in the global scope
+  const [deployer] = await ethers.getSigners();
   console.log(
-    `Lock with ${ethers.formatEther(
-      lockedAmount
-    )}ETH and unlock timestamp ${unlockTime} deployed to ${lock.target}`
+    "Deploying the contracts with the account:",
+    await deployer.getAddress()
+  );
+
+  console.log("Account balance:", (await deployer.getBalance()).toString());
+
+  const fundOS = await ethers.getContractFactory("fundOS");
+  const fundos = await fundOS.deploy();
+  await fundos.deployed();
+
+  console.log("FundOS address:", fundos.address);
+
+  // We also save the contract's artifacts and address in the frontend directory
+  saveFrontendFiles(fundos);
+}
+
+function saveFrontendFiles(fundos) {
+  const fs = require("fs");
+  const contractsDir = path.join(__dirname, "..", "fund-os", "src", "contracts");
+
+  if (!fs.existsSync(contractsDir)) {
+    fs.mkdirSync(contractsDir);
+  }
+
+  fs.writeFileSync(
+    path.join(contractsDir, "contract-address.json"),
+    JSON.stringify({ fundOS: fundos.address }, undefined, 2)
+  );
+
+  const FundOSArtifact = artifacts.readArtifactSync("fundOS");
+
+  fs.writeFileSync(
+    path.join(contractsDir, "fundOS.json"),
+    JSON.stringify(FundOSArtifact, null, 2)
   );
 }
 
-// We recommend this pattern to be able to use async/await everywhere
-// and properly handle errors.
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });

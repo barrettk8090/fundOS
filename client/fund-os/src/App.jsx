@@ -27,6 +27,18 @@ function App() {
 
   const [user, setUser] = useState(null)
   const [singleProject, setSingleProject] = useState(null)
+  const [ethAddress, setEthAddress] = useState('');
+
+  const connectWallet = async function connectWallet() {
+      if (window.ethereum) {
+          const provider = new ethers.BrowserProvider(window.ethereum);
+          const signer = await provider.getSigner();
+          const address = await signer.getAddress();
+          setEthAddress(address);
+      } else {
+          console.log('Please install MetaMask!');
+      }
+  }
 
   useEffect(() => {
     fetch('/api/session')
@@ -65,14 +77,14 @@ function App() {
     
       <>
       <BrowserRouter>
-        <Nav user={user} setUser={setUser}/>
+        <Nav user={user} setUser={setUser} ethAddress={ethAddress} setEthAddress={setEthAddress} connectWallet={connectWallet}/>
         <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/create-account" element={<CreateAccount user={user} setUser={setUser}/>}/>
         <Route path="/login" element={<Login user={user} setUser={setUser}/>}/>
         <Route path="/projects" element={<AllProjects/>}/>
         <Route path="/dashboard" element={<Dashboard user={user}/>}/>
-        <Route path="/account" element={<Account user={user}/>}/>
+        <Route path="/account" element={<Account user={user} ethAddress={ethAddress}/>}/>
         //This is a TEMP route for the project detail page
         <Route path="/project/:id" element={<ProjectDetailPage user={user} component={ProjectDetailPage}/>}/>
         <Route path="/create-new-project" element={<NewProjectSubmission user={user}/>}/>
@@ -81,10 +93,6 @@ function App() {
 
         </Routes>
         </BrowserRouter>
-        {/* <Flex direction="column" gap="2">
-          <Text>Hello from Radix Themes :)</Text>
-        </Flex>
-        <Button>Let's go</Button> */}
       </>
   
   )
