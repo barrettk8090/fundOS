@@ -62,7 +62,7 @@ function NewProjectSubmission({user}){
                 const contractAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
                 const contract = new ethers.Contract(contractAddress, fundOSArtifact.abi, signer);
                 const deadlineContractConvert = Math.floor(new Date(deadline).getTime() /  1000);
-                const transaction = await contract.createProject(ethers.parseEther(fundingNeeded.toString()), deadlineContractConvert);
+                const transaction = await contract.createProject(fundingNeeded, deadlineContractConvert);
                 await transaction.wait();
 
                 navigate(`/lets-do-this/${projectId}`) ;
