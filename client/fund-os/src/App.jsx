@@ -8,7 +8,8 @@ import {
   Router,
   Link
 } from "react-router-dom";
-import {ethers} from 'ethers'
+import { ethers } from 'ethers'
+import fundOSArtifact from './contracts/fundOS.json'
 
 import Home from './components/Home'
 import Nav from './components/Nav'
@@ -28,6 +29,25 @@ function App() {
   const [user, setUser] = useState(null)
   const [singleProject, setSingleProject] = useState(null)
   const [ethAddress, setEthAddress] = useState('');
+  
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const provider = new ethers.JsonRpcProvider('http://localhost:8545'); 
+      const signer = provider.getSigner();
+      const contractAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512';
+      const contract = new ethers.Contract(contractAddress, fundOSArtifact.abi, signer);
+
+      try {
+        const message = await contract.createProject; 
+        console.log(message);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const connectWallet = async function connectWallet() {
       if (window.ethereum) {

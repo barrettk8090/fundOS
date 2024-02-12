@@ -1,5 +1,7 @@
 import {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { ethers } from 'ethers'
+import fundOSArtifact from '../contracts/fundOS.json'
 
 function NewProjectSubmission({user}){
 
@@ -54,6 +56,15 @@ function NewProjectSubmission({user}){
                 const projectId = data.id;
                 console.log('Project ID:', projectId)
                 console.log('Form submitted successfully');
+                
+                const provider = new ethers.BrowserProvider(window.ethereum);
+                const signer = await provider.getSigner();
+                const contractAddress = '0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512'
+                const contract = new ethers.Contract(contractAddress, fundOSArtifact.abi, signer);
+                const deadlineContractConvert = Math.floor(new Date(deadline).getTime() /  1000);
+                const transaction = await contract.createProject(ethers.parseEther(fundingNeeded.toString()), deadlineContractConvert);
+                await transaction.wait();
+
                 navigate(`/lets-do-this/${projectId}`) ;
             }
         } catch (error) {

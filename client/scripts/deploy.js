@@ -20,13 +20,16 @@ async function main() {
     await deployer.getAddress()
   );
 
-  console.log("Account balance:", (await deployer.getBalance()).toString());
+  const provider = deployer.provider;
+  const balance = await provider.getBalance(await deployer.getAddress());
+  console.log("Account balance:", balance.toString());
 
   const fundOS = await ethers.getContractFactory("fundOS");
   const fundos = await fundOS.deploy();
-  await fundos.deployed();
+  await fundos.waitForDeployment();
 
-  console.log("FundOS address:", fundos.address);
+  const fundosDeployedAddress = await fundos.getAddress();
+  console.log("FundOS address:", fundosDeployedAddress);
 
   // We also save the contract's artifacts and address in the frontend directory
   saveFrontendFiles(fundos);
