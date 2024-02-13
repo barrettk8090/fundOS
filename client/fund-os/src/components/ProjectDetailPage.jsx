@@ -82,7 +82,7 @@ function ProjectDetailPage({user, ...props}){
             })
             .then(r => r.json())
             .then(data=> setProjectComments([...projectComments, data]));
-            
+            setNewComment("")
             
     
             if (!response.ok) {
@@ -158,7 +158,7 @@ function ProjectDetailPage({user, ...props}){
             <div className="pdp-blocks col-span-4 p-24 mx-12">
                 <h2 className="flex justify-center text-5xl">Funders</h2>
                 <h3 className="flex justify-center text-xl py-4">A list of the users who have backed this project.</h3>
-                <div className="scroll-container">
+                <div className="scroll-container rounded-xl">
                     {displayProjectFunders}
                 </div>
             </div>
@@ -166,14 +166,14 @@ function ProjectDetailPage({user, ...props}){
             <div className="pdp-blocks col-span-4 p-24 mx-12">
                 <h2 className="flex justify-center text-5xl">Comments</h2>
                 <h3 className="flex justify-center text-xl py-4">Let this creator know how excited you are to get this funded!</h3>
-                <div className="scroll-container">
+                <div className="scroll-container rounded-xl mb-10">
                     {displayProjectComments}
                 </div>
                 
                 <form onSubmit={handleSubmit}> 
-                    <label>
-                        Comment:
-                        <input type="text" name="comment" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
+                    <label className="text-xl">
+                        <p className="pb-4">Leave your comment: </p>
+                        <input className="rounded-md mr-2 w-96 h-12" type="text" name="comment" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
                     </label>
                     <input type="submit" value="Submit" />
                 </form>

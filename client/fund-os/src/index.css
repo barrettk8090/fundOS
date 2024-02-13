@@ -123,9 +123,12 @@ button:focus-visible {
 
 .pdp-blocks{
   background-color: #F2CD5D;
+  height:700px;
 }
 
 .scroll-container {
-  height: 200px; /* Adjust as needed */
+  height: 311px; /* Adjust as needed */
   overflow-y: auto;
+  border: 2px solid #3A1772;
+  padding: 12px;
 }
