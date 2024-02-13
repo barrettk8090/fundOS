@@ -46,7 +46,6 @@ h1, h2, h3, h4, h5, h6{
 
 p{
   color: #89B8D2;
-  ;
 }
 
 Link{
@@ -75,6 +74,18 @@ button:focus-visible {
 
 .dash-bg{
   background-color: #F2CD5D;
+}
+
+.pdp-banner{
+  background-color: #F2CD5D;
+}
+
+.pdp-banner h3, p{
+  color: #3A1772;
+}
+
+.pdp-banner .titles{
+  color: #D741A7;
 }
 
 .dash-bg h3 {
@@ -106,4 +117,15 @@ button:focus-visible {
   }
 }
 
+.yellow-desc{
+  color: #F2CD5D;
+}
 
+.pdp-blocks{
+  background-color: #F2CD5D;
+}
+
+.scroll-container {
+  height: 200px; /* Adjust as needed */
+  overflow-y: auto;
+}

@@ -43,7 +43,7 @@ function FundModal({setShowFundModal, project, user, updateAmountRaised}){
     }
     return (
       <>
-      <dialog className={isSuccess ? 'bg-black p-20 mx-60 align-middle rounded-lg' : 'p-20 mx-60 align-middle rounded-lg'} open={true}>
+      <dialog className={isSuccess ? 'p-20 mx-60 align-middle rounded-lg' : 'p-20 mx-60 align-middle rounded-lg'} open={true}>
           {isSuccess ? (
               <div className="flex flex-col items-center">
                   <svg className="w-6 h-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">

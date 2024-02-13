@@ -104,23 +104,27 @@ function ProjectDetailPage({user, ...props}){
 
     return (
         <>
-        <div className="grid grid-cols-8 mx-12 my-12 p-6 border-2 rounded-md shadow-2xl">
+        <div className="pdp-banner grid grid-cols-8 mx-12 my-12 p-12 shadow-2xl">
+
+            <div className="col-span-8">
+            <h1 className="lg:text-6xl">{project.name}</h1>
+            </div>
 
             <div className="col-span-4">
-                <h1 className="lg:text-6xl">{project.name}</h1>
-                <p className="py-12">Created by: {projectCreator?.username}</p>
-                <p>{project.type}</p>
+               
+                <p className="py-2">Created by: {projectCreator?.username}</p>
+                <p className="py-2">{project.type}</p>
                 <img src={project.image} alt="Project Image"/>
             </div>
 
-            <div className="col-span-4 mt-40 px-8">
-               <h3 className="text-3xl my-4">Funding Goal</h3>
-               <p className="mb-12"> {project.funding_needed} </p>
+            <div className="col-span-4 mt-20 px-8">
+               <h3 className="titles text-3xl my-4">Funding Goal</h3>
+               <p className="mb-12"> {project.funding_needed} ETH</p>
 
-                <h3 className="text-3xl my-4">Amount Raised</h3>
-                <p className="mb-12"> {project.current_funding} </p>
+                <h3 className="titles text-3xl my-4">Amount Raised</h3>
+                <p className="mb-12"> {project.current_funding} ETH</p>
 
-                <h3 className="text-3xl my-4">Deadline</h3>
+                <h3 className="titles text-3xl my-4">Deadline</h3>
                 <p className="mb-12"> {project.deadline.split(' ')[0]} </p>
                 <div className="flex flex-row-reverse">
                 <button className="w-60 h-16" onClick={() => setShowFundModal(true)}>
@@ -129,15 +133,15 @@ function ProjectDetailPage({user, ...props}){
                 {showFundModal && <FundModal setShowFundModal={setShowFundModal} project={project} user={user} updateAmountRaised={updateAmountRaised}/>}
                 </div>
             </div>
-        </div>
-
-        <div className="mx-32 my-12">
+            <div className="col-span-8 mx-32 my-12">
         <h2 className="flex justify-center text-5xl pb-8">Funding Progress</h2>
                 <div className="w-full bg-slate-200 rounded-full h-24 dark:bg-gray-700 overflow-hidden"> 
                     <div className="bg-purple-600 h-24 rounded-full transition-all duration-500 ease-linear" style={{ width: fundingPercentage }}> <p className="flex justify-center pt-8 text-xl">{fundingPercentage} Funded</p>
                     </div>
                 </div>
         </div>
+        </div>
+
 
 
 
@@ -145,29 +149,36 @@ function ProjectDetailPage({user, ...props}){
             <h2> TBD - Project Updates</h2>
         </div> */}
 
-        <div className="bg-blue-900 p-24 mx-12 shadow-xl rounded-lg">
+        <div className="p-24 mx-12">
             <h2 className="flex justify-center text-5xl">About This Project</h2>
-            <p className="pt-12 mx-32 text-2xl leading-10">{project.description}</p>
+            <p className="yellow-desc pt-12 mx-32 text-2xl leading-10">{project.description}</p>
         </div>
 
-        <div className="bg-green-900 p-24 mx-12 my-12 shadow-xl rounded-lg">
-            <h2 className="flex justify-center text-5xl">Funders</h2>
-            {displayProjectFunders}
-        </div>
+        <div className="grid grid-cols-8 mb-24">
+            <div className="pdp-blocks col-span-4 p-24 mx-12">
+                <h2 className="flex justify-center text-5xl">Funders</h2>
+                <h3 className="flex justify-center text-xl py-4">A list of the users who have backed this project.</h3>
+                <div className="scroll-container">
+                    {displayProjectFunders}
+                </div>
+            </div>
 
-        <div className="bg-purple-900 p-24 mx-12 shadow-xl rounded-lg">
-            <h2 className="flex justify-center text-5xl">Comments</h2>
-            {displayProjectComments}
-     
-            <h3 className="flex justify-center text-2xl py-4">Give this project a shoutout! Leave a comment below to let this creator know how excited you are to get this funded.</h3>
-            <form onSubmit={handleSubmit}> 
-                <label>
-                    Comment:
-                    <input type="text" name="comment" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
-                </label>
-                <input type="submit" value="Submit" />
-            </form>
+            <div className="pdp-blocks col-span-4 p-24 mx-12">
+                <h2 className="flex justify-center text-5xl">Comments</h2>
+                <h3 className="flex justify-center text-xl py-4">Let this creator know how excited you are to get this funded!</h3>
+                <div className="scroll-container">
+                    {displayProjectComments}
+                </div>
+                
+                <form onSubmit={handleSubmit}> 
+                    <label>
+                        Comment:
+                        <input type="text" name="comment" value={newComment} onChange={(e) => setNewComment(e.target.value)}/>
+                    </label>
+                    <input type="submit" value="Submit" />
+                </form>
 
+            </div>
         </div>
         </>
     )
