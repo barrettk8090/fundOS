@@ -81,19 +81,25 @@ function NewProjectSubmission({user}){
                 </p>
             </div>
                
-            <form className="grid grid-cols-2 lg:mx-48 lg:my-6" onSubmit={handleSubmit}>
-                <label className="flex justify-center col-span-2 mb-6">
-                    Project Name:  
+            <form className="create-project-form p-12 grid grid-cols-2 lg:mx-48 lg:my-6" onSubmit={handleSubmit}>
+                <label className="col-span-2 mb-6">
+                    <p className="text-2xl">Project Name:  </p>
                     <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="project_name" value={projectName} onChange={(e) => setProjectName(e.target.value)}/>
+                    <p>Give your project a compelling, unique name.</p>
                 </label>
 
-                <label className="col-span-2 flex justify-center">
-                    Project Description: 
-                    <input className="rounded-md border-2 border-purple-600 w-96 h-60" type="text" name="project_description" value={projectDescription} onChange={(e) => setProjectDescription(e.target.value)}/>
+                <label className="col-span-2">
+                    <p className="text-2xl">Project Description:</p>
+                    <textarea 
+                        className="rounded-md border-2 border-purple-600 w-full h-60 resize-none" 
+                        name="project_description" 
+                        value={projectDescription} 
+                        onChange={(e) => setProjectDescription(e.target.value)} />
+                    <p>Try to write an exciting description that will get your audience excited about contributing to your project!</p>
                 </label>
 
-                        <label className="col-span-1 flex justify-center py-4">
-                            Project Type:
+                <label className="col-span-1 py-4 flex flex-col">
+                            <p className="text-2xl">Project Type:</p>
                             <select className="rounded-md border-2 border-purple-600 w-96 h-12 mb-6" name="type" value={projectType} onChange={(e) => setProjectType(e.target.value)} required>
                                 <option>Arts & Lifestyle</option>
                                 <option>Design</option>
@@ -105,25 +111,27 @@ function NewProjectSubmission({user}){
                                 <option>Publishing</option>
                                 <option>Programming</option>
                             </select>
-                        </label>
+                 </label>
 
-                        <label className="col-span-1 flex justify-center py-4">
-                            Project Image:
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="img" name="project_image" value={projectImage} onChange={(e) => setProjectImage(e.target.value)}/>
-                        </label>
+                <label className="col-span-1 py-4 flex flex-col">
+                    <p className="text-2xl">Project Image:</p>
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="img" name="project_image" value={projectImage} onChange={(e) => setProjectImage(e.target.value)}/>
+                    <p>For now, please use an outsourced URL that directly links to an image.</p>
+                </label>
 
-                        <label className="col-span-1 flex justify-center">
-                            Funding Needed:
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="funding_needed" value={fundingNeeded} onChange={(e) => setFundingNeeded(e.target.value)}/>
-                        </label>
+                <label className="col-span-1 flex flex-col">
+                    <p className="text-2xl">Funding Needed:</p>
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="text" name="funding_needed" value={fundingNeeded} onChange={(e) => setFundingNeeded(e.target.value)}/>
+                    <p>Enter the amount, in Ether, that you need to fund your project.</p>
+                </label>
 
-                        <label className="col-span-1 flex justify-center">
-                            Deadline:
-                            {isDeadlinePast && <p style={{color: 'red'}}>Deadline cannot be in the past</p>}
-                            <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="date" name="deadline" placeholder="2024-01-01"value={deadline} onChange={handleDeadlineChange}/>
-                        </label> 
+                <label className="col-span-1 flex flex-col">
+                    <p className="text-2xl">Deadline:</p>
+                    {isDeadlinePast && <p style={{color: 'red'}}>Deadline cannot be in the past</p>}
+                    <input className="rounded-md border-2 border-purple-600 w-96 h-12" type="date" name="deadline" placeholder="2024-01-01"value={deadline} onChange={handleDeadlineChange}/>
+                </label> 
 
-                        <button className="col-span-2 my-12 bg-slate-500 mx-60" type="submit">Launch 🚀 →</button>
+                <button className="col-span-2 my-12 bg-slate-500 mx-60" type="submit">Launch 🚀 →</button>
 
                     </form>
                 
