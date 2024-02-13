@@ -6,6 +6,7 @@ function Dashboard({user}) {
   // const navigate = useNavigate();
 
   const [userFundedProjects, setUserFundedProjects] = useState([])
+  const [trendingProjects, setTrendingProjects] = useState([])
 
 
   useEffect(() => {
@@ -14,6 +15,8 @@ function Dashboard({user}) {
           .then(r => r.json())
           .then(data => setUserFundedProjects(data)) }
   }, [user]);
+
+
 
   //Need to map further into the userFundedProjects array to display the individual projects
   const displayUserFundedProject = userFundedProjects.map(oneFundedProject => {
@@ -45,8 +48,8 @@ function Dashboard({user}) {
 
       <div className="dash-trending">
           <div className="indiv-trending">
-          <h2 className="my-12 flex justify-center font-bold text-4xl">Trending Projects </h2>
-              <p>These projects are close to hitting their funding goal! Check them out now to help them reach the finish line.</p>
+          <h2 className="my-12 flex justify-center font-bold text-4xl">Top Funded Projects</h2>
+              <p className="flex justify-center">These projects are close to hitting their funding goal! Check them out now to help them reach the finish line.</p>
           </div>
       </div>
     </div>
