@@ -37,7 +37,7 @@ function Nav({user, setUser, ethAddress, setEthAddress, connectWallet}) {
     </div>
     <div className="flex">
         <Link to="/create-new-project">
-            <button className="mx-4 p-4 font-display animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-xl">Start A Project +</button>
+            <div className="home-text mx-4 p-4 font-display text-xl">Start A Project +</div>
         </Link>
         <div className="mx-4 mb-6 p-4 bg-pink-600 font-display" onClick={connectWallet}>WalletConnect</div>
         {ethAddress && <p>Your Ethereum address: {ethAddress}</p>}
