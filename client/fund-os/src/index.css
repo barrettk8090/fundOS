@@ -136,3 +136,12 @@ button:focus-visible {
 .create-project-form{
   background-color: #F2CD5D;
 }
+
+.create-account{
+  background-color: #F2CD5D;
+}
+
+.create-button{
+  background-color: #3A1772;
+  color: #D741A7;
+}
