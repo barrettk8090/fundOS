@@ -63,7 +63,7 @@ function CreateAccount({user, setUser}){
     return (
         <>
             <h1 className="lg:p-4 mt-12 flex justify-center font-display ">Create A New Account</h1>
-            <div className="create-account lg:mx-60 lg:mt-6 lg:mb-12 lg:p-12">
+            <div className="create-account-login lg:mx-60 lg:mt-6 lg:mb-12 lg:p-12">
                 
 
 
