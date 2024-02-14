@@ -75,8 +75,8 @@ function NewProjectSubmission({user}){
     return (
         <>    
             <div>
-                <h1 className="mx-12 my-8 lg:text-6xl flex justify-center animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent font-bold">Publish Your Project</h1>
-                <p className="lg:mx-48 font-bold">If you're ready to begin fundraising for a project, fill out this form and hit submit. Be careful when entering your information - you cannot edit a project, aside from the project name, once a submission has been made. If an error is made, projects must be deleted from the system and re-added with updated details. 
+                <h1 className="mx-12 my-8 lg:text-6xl flex justify-center font-bold">Publish Your Project</h1>
+                <p className="home-text lg:mx-48 font-bold">If you're ready to begin fundraising for a project, fill out this form and hit submit. Be careful when entering your information - you cannot edit a project, aside from the project name, once a submission has been made. If an error is made, projects must be deleted from the system and re-added with updated details. 
                 {/* Please read more details on what it means to submit a project here: INSERT LINK. */}
                 </p>
             </div>
