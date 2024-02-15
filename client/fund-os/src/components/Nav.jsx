@@ -33,26 +33,39 @@ function Nav({user, setUser, ethAddress, setEthAddress, connectWallet}) {
                     </clipPath>
                     </defs>
                     </svg>
-</Link>
-    </div>
-    <div className="flex">
-        <Link to="/create-new-project">
-            <div className="home-text mx-4 p-4 font-display text-xl">Start A Project +</div>
-        </Link>
-        <div className="mx-4 mb-6 p-4 bg-pink-600 font-display" onClick={connectWallet}>WalletConnect</div>
-        {ethAddress && <p>Your Ethereum address: {ethAddress}</p>}
-    </div>
-</div>
+  </Link>
+      </div>
+
+
+        <div className="flex flex-wrap justify-center">
+            <Link to="/create-new-project">
+                <div className="home-text mx-4 p-4 font-display text-xl">Start A Project +</div>
+            </Link>
+            <div className="flex flex-col items-center">
+              <div className="flex flex-col items-center justify-center">
+                <div className="pink-button mx-4 mb-6 p-4 w-36 font-display" onClick={connectWallet}>
+                  <p className="yellow-desc">WalletConnect</p>
+              </div>
+                {ethAddress && (
+                    <div className="mb-4">
+                        <p className="home-text text-xs"><br/> {ethAddress.substring(0,  3)}...{ethAddress.substring(ethAddress.length -  3)}</p>
+                    </div>
+                )}
+                </div>
+               </div>
+            </div>
+          </div>
+
+
             <nav className="justify-end">
                 
             
-            <div className="flex justify-end font-display text-xl pt-2">
+            <div className="flex justify-end font-display text-2xl pt-2">
           
                 <Link to="/dashboard" className="mx-4 pt-2">Dashboard</Link>
                 <Link to="/projects" className="mx-4 pt-2">Projects</Link>
                 <Link to="/account" className="mx-4 pt-2">Account</Link>
-                <Link to="/project/1" className="mx-4 pt-2">ProjectListingTemp</Link>
-                <button className="mx-4" onClick={handleLogout}>Logout</button>
+                <button className="mx-4 text-lg" onClick={handleLogout}>Logout</button>
                 
             </div>
         </nav>
