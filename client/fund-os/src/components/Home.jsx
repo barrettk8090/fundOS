@@ -10,7 +10,7 @@ function Home({user, setUser}){
             <h1 className="mb-32 flex justify-center text-3xl lg:text-7xl  text-center font-display">Welcome to the future <br></br> of crowdfunding <br/> (eventually).</h1>
             <p className="home-text mb-32 flex justify-center text-5xl text-center font-display"><span className="pr-4">Create projects with ease.</span> <span className="pr-4">Get funded by backers. </span>Receive immediate payouts.</p>
             <div className="flex justify-center font-display">
-            <Link to="/create-account"><button className="px-8 py-6">Get Started →</button></Link>
+            <Link to="/create-account"><button className="px-8 py-6 create-button text-4xl">Get Started →</button></Link>
 
             </div>
         </div>

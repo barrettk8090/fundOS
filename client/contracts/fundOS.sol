@@ -12,8 +12,6 @@ contract fundOS {
         bool isFunded;
     }
 
-
-
     //Map to associate each project with a unique identifier 
     mapping(uint => Project) public projects;
     //Counter to keep track of the total number of projects

@@ -5,9 +5,9 @@ function CreateProjectInterstitial() {
 
     return (
         <div>
-            <h1 className="my-12 flex justify-center text-3xl lg:text-7xl animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-center font-display">Let's do this...</h1>
-            <p className="flex justify-center lg:text-4xl">You just created a project on FundOS. Ready to check it out?</p>
-            <div className="flex justify-center my-12">
+            <h1 className="my-24 flex justify-center text-3xl lg:text-9xl text-center font-display">Let's do this...</h1>
+            <p className="home-text flex justify-center lg:text-4xl pb-16">You just created a project on FundOS. Ready to check it out?</p>
+            <div className="flex justify-center create-button text-4xl my-6 mx-60">
                 <button  onClick={() => window.location.href=`/project/${projectId}`}>View My Project →</button>
             </div>
         </div>

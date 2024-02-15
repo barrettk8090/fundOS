@@ -4,6 +4,18 @@
 
 Welcome to fundOS, a cutting-edge decentralized crowdfunding platform that leverages blockchain technology to enable direct peer-to-peer funding through smart contracts. With a focus on transparency, trust, and community engagement, fundOS provides a robust ecosystem for creators and investors alike.
 
+This project is currently a work-in-progress. We'll call it version 0.0.1. In its current state,
+
+## Screenshots
+
+![FundOS Homepage](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.19.08 AM.png>)
+![Create Project Form Interface](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.22.59 AM.png>)
+![Create Project Form Showing Connection with MetaMask](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.23.46 AM.png>)
+![All Projects Page](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.23.56 AM.png>)
+![Individual Project Page Showing Funding Percentage Bar](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.24.26 AM.png>)
+![About This Project Module](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.24.34 AM.png>)
+![User Dashboard](<client/fund-os/src/assets/Screenshot 2024-02-15 at 11.24.48 AM.png>)
+
 ## Technologies Used
 
 This project was built using a variety of technologies:
