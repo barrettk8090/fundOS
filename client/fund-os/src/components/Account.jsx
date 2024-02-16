@@ -41,8 +41,8 @@ function Account({user, ethAddress}){
                     <p className="pb-4">Username: {user?.username}</p>
                     {/* <button>Edit</button> */}
                 </div>
-                <p className="pb-4">Wallet Address: {user?.wallet_address}</p> 
-                <p className="pb-4">Read Wallet Address: {ethAddress}</p>
+                {/* <p className="pb-4">Wallet Address: {user?.wallet_address}</p>  */}
+                <p className="pb-4">Wallet Address: {ethAddress}</p>
             </div>
         </div>
 
